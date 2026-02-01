@@ -1,585 +1,106 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio | Engineering & Automation</title>
-  <meta name="description" content="Portfolio of a Systems Engineer specializing in AI, Automation, and Data Structure." />
-
-  <!-- Open Graph meta tags -->
-  <meta property="og:title" content="Portfolio | Engineering & Automation" />
-  <meta property="og:description" content="Systems Engineer specializing in AI, Automation, and Data Structure." />
-  <meta property="og:type" content="website" />
-
-  <!-- Inter font -->
+  <meta name="description" content="Systems Engineer specializing in AI, Automation, and Data Structure." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* --- DESIGN TOKENS --- */
-    :root {
-      --bg-body: #f8f9fa;
-      --bg-card: #ffffff;
-      --text-main: #1f2937;
-      --text-muted: #6b7280;
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --accent: #f59e0b;
-      --border: #e5e7eb;
-      --radius-lg: 12px;
-      --radius-sm: 6px;
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-
-      --success: #10b981;
-      --warn: #f59e0b;
-      --neutral: #6b7280;
-
-      --kbd-bg: #111827;
-      --kbd-text: #e5e7eb;
-    }
-
-    /* --- RESET & BASE (Mobile First) --- */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: var(--font-sans);
-      background-color: var(--bg-body);
-      color: var(--text-main);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { text-decoration: none; color: inherit; transition: color 0.2s; }
-    ul { list-style: none; }
-    button { font-family: var(--font-sans); }
-
-    /* --- LAYOUT UTILITIES --- */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-    .section { padding: 48px 0; }
-
-    /* --- HEADER --- */
-    header {
-      background: var(--bg-card);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(8px);
-    }
-    .nav-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-    .brand {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--text-main);
-      letter-spacing: -0.02em;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .brand span { color: var(--primary); }
-    .brand-badge {
-      font-size: 0.72rem;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      background: #fafafa;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-
-    /* Hamburger Button */
-    .hamburger {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 28px;
-      height: 28px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      z-index: 110;
-    }
-    .hamburger span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background-color: var(--text-main);
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-    /* Mobile Navigation */
-    .nav-links {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--bg-card);
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 32px;
-      z-index: 105;
-    }
-    .nav-links.active { display: flex; }
-    .nav-links a {
-      font-weight: 600;
-      color: var(--text-main);
-      font-size: 1.5rem;
-    }
-    .nav-links a:hover { color: var(--primary); }
-
-    /* --- HERO --- */
-    .hero { text-align: center; padding: 60px 0 30px; }
-    .hero h1 {
-      font-size: 2rem;
-      line-height: 1.12;
-      font-weight: 900;
-      margin-bottom: 14px;
-      color: var(--text-main);
-      letter-spacing: -0.03em;
-    }
-    .hero p {
-      font-size: 1rem;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero-tags {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-    .tag {
-      background: #e0e7ff;
-      color: var(--primary);
-      padding: 6px 12px;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      border: 1px solid rgba(37, 99, 235, 0.12);
-    }
-
-    /* --- QUICK STATS + SEARCH --- */
-    .hero-tools {
-      margin-top: 16px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    .tool-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 14px;
-      box-shadow: var(--shadow-sm);
-      text-align: left;
-    }
-    .tool-row {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .search-wrap {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-      width: 100%;
-    }
-    .search {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 10px 12px;
-      flex: 1;
-      min-width: 220px;
-    }
-    .search input {
-      border: none;
-      outline: none;
-      width: 100%;
-      font-size: 0.95rem;
-      color: var(--text-main);
-      background: transparent;
-    }
-    .search-hint {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .kbd {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 0.74rem;
-      background: var(--kbd-bg);
-      color: var(--kbd-text);
-      border-radius: 6px;
-      padding: 3px 7px;
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-
-    /* --- FILTER BAR --- */
-    .filter-container {
-      display: flex;
-      justify-content: flex-start;
-      gap: 8px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .filter-btn {
-      background: transparent;
-      border: 1px solid var(--border);
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-weight: 700;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-size: 0.85rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .filter-btn:hover { border-color: var(--text-muted); color: var(--text-main); }
-    .filter-btn.active { background: var(--text-main); color: #fff; border-color: var(--text-main); }
-
-    .pill {
-      font-size: 0.72rem;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.16);
-      color: rgba(255,255,255,0.9);
-      border: 1px solid rgba(255,255,255,0.22);
-      font-weight: 800;
-      letter-spacing: 0.02em;
-    }
-    .filter-btn:not(.active) .pill {
-      background: #f3f4f6;
-      color: var(--text-muted);
-      border-color: var(--border);
-    }
-
-    .filter-meta {
-      margin-left: auto;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .meta-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--border);
-      display: inline-block;
-    }
-
-    /* --- PROJECT GRID --- */
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s, border-color 0.2s;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: rgba(37,99,235,0.55);
-    }
-
-    .card-topline {
-      height: 4px;
-      width: 100%;
-      background: linear-gradient(90deg, rgba(37,99,235,0.75), rgba(245,158,11,0.75));
-      opacity: 0.95;
-    }
-
-    .card-header { padding: 18px 20px 10px; }
-    .card-category {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 900;
-      color: var(--primary);
-      margin-bottom: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .cat-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
-    }
-    .card-title {
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 6px;
-      line-height: 1.3;
-      letter-spacing: -0.01em;
-    }
-    .card-sub {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    .card-body {
-      padding: 0 20px 18px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .card-text {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      margin-top: 8px;
-    }
-
-    .impact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
-    .impact-badge {
-      font-size: 0.75rem;
-      padding: 6px 10px;
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--text-main);
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .impact-badge small { color: var(--text-muted); font-weight: 700; }
-
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: auto;
-    }
-    .tech-badge {
-      font-size: 0.72rem;
-      padding: 4px 9px;
-      background: var(--bg-body);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      color: var(--text-muted);
-      font-weight: 700;
-    }
-
-    .card-footer {
-      padding: 14px 20px;
-      border-top: 1px solid var(--border);
-      background: #fafafa;
-      display: flex;
-      justify-content: flex-end; /* Links to right */
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .link-case {
-      font-weight: 800;
-      color: var(--primary);
-      font-size: 0.88rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .link-case:hover { text-decoration: underline; color: var(--primary-hover); }
-
-    .card-links {
-      display: inline-flex;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    /* --- PHILOSOPHY --- */
-    .philosophy { max-width: 100%; }
-    .philosophy h2 {
-      font-size: 1.5rem;
-      margin-bottom: 16px;
-      color: var(--text-main);
-      letter-spacing: -0.02em;
-    }
-    .philosophy p {
-      font-size: 1rem;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-    .philosophy p strong { color: var(--text-main); }
-    .philosophy-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 18px;
-    }
-    .mini-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 16px;
-      box-shadow: var(--shadow-sm);
-    }
-    .mini-card h3 {
-      font-size: 1rem;
-      font-weight: 900;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
-    .mini-card p { font-size: 0.92rem; margin-bottom: 0; }
-
-    /* --- FOOTER --- */
-    footer {
-      background: #111827;
-      color: #9ca3af;
-      padding: 40px 0;
-      margin-top: 60px;
-      text-align: center;
-      font-size: 0.85rem;
-    }
-    .footer-links {
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .footer-links a { color: #fff; font-weight: 700; }
-    .footer-links a:hover { color: #93c5fd; }
-    .footer-disclaimer {
-      margin-top: 12px;
-      font-size: 0.75rem;
-      color: #6b7280;
-      max-width: 650px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* --- TABLET BREAKPOINT --- */
-    @media (min-width: 600px) {
-      .container { padding: 0 24px; }
-      .section { padding: 60px 0; }
-      .hero { padding: 80px 0 40px; }
-      .hero h1 { font-size: 2.5rem; }
-      .hero p { font-size: 1.1rem; }
-      .tag { padding: 6px 14px; font-size: 0.85rem; }
-      .grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-      .filter-container { justify-content: center; gap: 10px; margin-bottom: 22px; }
-      .philosophy { max-width: 820px; margin: 0 auto; }
-      .hero-tools { grid-template-columns: 1fr; }
-      .philosophy-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    /* --- DESKTOP BREAKPOINT --- */
-    @media (min-width: 900px) {
-      header { padding: 20px 0; }
-      .brand { font-size: 1.25rem; }
-      .hamburger { display: none; }
-      .nav-links {
-        display: flex;
-        position: static;
-        flex-direction: row;
-        gap: 28px;
-        background: transparent;
-      }
-      .nav-links a {
-        font-weight: 700;
-        color: var(--text-muted);
-        font-size: 0.95rem;
-      }
-
-      .section { padding: 80px 0; }
-      .hero { padding: 100px 0 50px; max-width: 980px; margin: 0 auto; }
-      .hero h1 { font-size: 3rem; margin-bottom: 20px; }
-      .hero p { font-size: 1.25rem; margin-bottom: 22px; }
-      .hero-tags { gap: 12px; }
-      .tag { padding: 6px 16px; font-size: 0.9rem; }
-
-      .hero-tools { grid-template-columns: 1fr; }
-      .tool-card { padding: 16px; }
-
-      .filter-container { gap: 12px; margin-bottom: 28px; }
-      .filter-btn { padding: 8px 18px; }
-
-      .grid { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; }
-      .card-header { padding: 22px 22px 12px; }
-      .card-title { font-size: 1.25rem; }
-      .card-body { padding: 0 22px 22px; }
-      .card-text { font-size: 0.95rem; }
-
-      .philosophy h2 { font-size: 2rem; margin-bottom: 22px; }
-      .philosophy p { font-size: 1.1rem; margin-bottom: 18px; }
-      .philosophy-grid { grid-template-columns: repeat(3, 1fr); }
-
-      footer { padding: 60px 0; margin-top: 90px; font-size: 0.9rem; }
-      .footer-links { gap: 24px; margin-bottom: 24px; }
-      .footer-disclaimer { font-size: 0.8rem; }
-    }
+    :root{--bg-body:#0a0a0b;--bg-card:#141416;--bg-card-hover:#1a1a1d;--bg-elevated:#1e1e21;--text-main:#f0f0f2;--text-muted:#8a8a8f;--text-dim:#5a5a5f;--primary:#3b82f6;--accent:#10b981;--accent-warm:#f59e0b;--border:#2a2a2e;--border-subtle:#1f1f23;--radius-lg:16px;--radius-md:10px;--radius-sm:6px;--font-sans:'DM Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace}
+    *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+    body{font-family:var(--font-sans);background:var(--bg-body);color:var(--text-main);line-height:1.6;-webkit-font-smoothing:antialiased}
+    body::before{content:'';position:fixed;top:0;left:0;right:0;height:600px;background:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(59,130,246,.08),transparent);pointer-events:none;z-index:0}
+    a{text-decoration:none;color:inherit;transition:color .2s}ul{list-style:none}button{font-family:var(--font-sans);cursor:pointer}
+    .container{max-width:1240px;margin:0 auto;padding:0 20px;position:relative;z-index:1}.section{padding:60px 0}
+    header{padding:20px 0;position:sticky;top:0;z-index:100;background:rgba(10,10,11,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle)}
+    .nav-wrapper{display:flex;justify-content:space-between;align-items:center}
+    .brand{font-family:var(--font-mono);font-size:.9rem;font-weight:600;display:inline-flex;align-items:center;gap:12px}
+    .brand-dot{width:8px;height:8px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    .hamburger{display:flex;flex-direction:column;gap:5px;width:24px;background:none;border:none;padding:0;z-index:110}
+    .hamburger span{height:2px;background:var(--text-main);border-radius:2px;transition:all .3s}
+    .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.hamburger.active span:nth-child(2){opacity:0}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    .nav-links{display:none;position:fixed;inset:0;background:var(--bg-body);flex-direction:column;justify-content:center;align-items:center;gap:32px;z-index:105}
+    .nav-links.active{display:flex}.nav-links a{font-weight:600;color:var(--text-muted);font-size:1.2rem}.nav-links a:hover{color:var(--text-main)}
+    @media(min-width:768px){.hamburger{display:none}.nav-links{display:flex;position:static;flex-direction:row;gap:32px;background:transparent}.nav-links a{font-size:.9rem}}
+    .hero{padding:100px 0 60px;max-width:800px}
+    .hero-eyebrow{font-family:var(--font-mono);font-size:.8rem;color:var(--primary);margin-bottom:16px;letter-spacing:.05em}
+    .hero h1{font-size:clamp(2.2rem,6vw,3.5rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:20px}.hero h1 span{color:var(--text-muted)}
+    .hero-description{font-size:1.1rem;color:var(--text-muted);max-width:600px;margin-bottom:32px}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:8px}
+    .tag{font-family:var(--font-mono);font-size:.75rem;padding:6px 12px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-muted)}
+    .section-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:32px;flex-wrap:wrap;gap:16px}
+    .section-title{font-family:var(--font-mono);font-size:.8rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em}
+    .filter-container{display:flex;gap:8px;flex-wrap:wrap}
+    .filter-btn{font-family:var(--font-mono);font-size:.75rem;padding:8px 14px;background:transparent;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-muted);transition:all .2s}
+    .filter-btn:hover{border-color:var(--text-dim);color:var(--text-main)}
+    .filter-btn.active{background:var(--text-main);color:var(--bg-body);border-color:var(--text-main)}
+    .filter-count{opacity:.6;margin-left:6px}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
+    .card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;transition:all .3s;position:relative;overflow:hidden}
+    .card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent);opacity:0;transition:opacity .3s}
+    .card:hover{background:var(--bg-card-hover);transform:translateY(-2px)}.card:hover::before{opacity:1}
+    .card-category{font-family:var(--font-mono);font-size:.7rem;color:var(--primary);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+    .card-title{font-size:1.1rem;font-weight:700;margin-bottom:8px;line-height:1.3}
+    .card-sub{font-family:var(--font-mono);font-size:.8rem;color:var(--text-dim);margin-bottom:16px}
+    .card-text{font-size:.9rem;color:var(--text-muted);flex-grow:1;margin-bottom:20px}
+    .tech-stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+    .tech-badge{font-family:var(--font-mono);font-size:.68rem;padding:4px 8px;background:var(--bg-elevated);border-radius:var(--radius-sm);color:var(--text-dim)}
+    .card-footer{display:flex;gap:12px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--border-subtle)}
+    .card-link{font-family:var(--font-mono);font-size:.8rem;color:var(--text-muted);display:inline-flex;align-items:center;gap:6px;transition:color .2s}
+    .card-link:hover{color:var(--primary)}.card-link svg{width:14px;height:14px}
+    .case-study-btn{font-family:var(--font-mono);font-size:.8rem;color:var(--accent);background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);padding:6px 12px;border-radius:var(--radius-sm);display:inline-flex;align-items:center;gap:6px;transition:all .2s}
+    .case-study-btn:hover{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3)}
+    .philosophy-content{max-width:700px}.philosophy-content>p{font-size:1.1rem;color:var(--text-muted);margin-bottom:20px}.philosophy-content strong{color:var(--text-main)}
+    .principles{display:grid;gap:16px;margin-top:40px}@media(min-width:640px){.principles{grid-template-columns:repeat(3,1fr)}}
+    .principle{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px}
+    .principle-number{font-family:var(--font-mono);font-size:.75rem;color:var(--primary);margin-bottom:12px}
+    .principle h3{font-size:1rem;margin-bottom:8px}.principle p{font-size:.9rem;color:var(--text-muted)}
+    .contact-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+    .contact-info h3{font-size:1.2rem;margin-bottom:8px}.contact-info p{color:var(--text-muted);font-size:.95rem}
+    .contact-email{font-family:var(--font-mono);font-size:.9rem;color:var(--text-main);margin-top:12px;display:flex;align-items:center;gap:12px}
+    .copy-btn{font-size:.75rem;padding:4px 10px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-muted);transition:all .2s}
+    .copy-btn:hover{border-color:var(--text-dim);color:var(--text-main)}
+    .contact-links{display:flex;gap:16px}
+    .contact-link{font-family:var(--font-mono);font-size:.85rem;color:var(--text-muted);padding:10px 20px;border:1px solid var(--border);border-radius:var(--radius-sm);transition:all .2s}
+    .contact-link:hover{border-color:var(--primary);color:var(--primary)}
+    footer{padding:40px 0;border-top:1px solid var(--border-subtle);margin-top:60px}
+    .footer-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .footer-text{font-size:.8rem;color:var(--text-dim)}.footer-links{display:flex;gap:24px}.footer-links a{font-size:.8rem;color:var(--text-muted)}.footer-links a:hover{color:var(--text-main)}
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);z-index:1000;opacity:0;visibility:hidden;transition:all .3s}
+    .modal-overlay.active{opacity:1;visibility:visible}
+    .modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);width:90%;max-width:720px;max-height:85vh;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);z-index:1001;opacity:0;visibility:hidden;transition:all .3s;overflow:hidden;display:flex;flex-direction:column}
+    .modal.active{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
+    .modal-header{padding:24px 28px;border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+    .modal-meta{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .modal-badge{font-family:var(--font-mono);font-size:.7rem;padding:4px 10px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);border-radius:var(--radius-sm);color:var(--accent);text-transform:uppercase;letter-spacing:.05em}
+    .modal-title{font-size:1.4rem;font-weight:700;line-height:1.3}
+    .modal-subtitle{font-size:.95rem;color:var(--text-muted);margin-top:6px}
+    .modal-close{width:36px;height:36px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-muted);display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .modal-close:hover{background:var(--bg-card-hover);color:var(--text-main)}
+    .modal-body{padding:28px;overflow-y:auto;flex:1}
+    .case-study{font-size:.95rem;line-height:1.75}
+    .case-study h2{font-size:1.15rem;font-weight:700;margin:32px 0 16px;padding-top:24px;border-top:1px solid var(--border-subtle)}
+    .case-study h2:first-child{margin-top:0;padding-top:0;border-top:none}
+    .case-study p{color:var(--text-muted);margin-bottom:16px}.case-study strong{color:var(--text-main);font-weight:600}
+    .case-study ul{margin:16px 0;padding-left:20px}
+    .case-study li{color:var(--text-muted);margin-bottom:8px;position:relative;list-style:none}
+    .case-study li::before{content:'→';position:absolute;left:-20px;color:var(--primary);font-family:var(--font-mono)}
+    .case-study blockquote{margin:24px 0;padding:20px 24px;background:var(--bg-elevated);border-left:3px solid var(--primary);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+    .case-study blockquote p{margin:0;font-style:italic}
+    .case-study-footer{margin-top:32px;padding-top:24px;border-top:1px solid var(--border-subtle);font-family:var(--font-mono);font-size:.8rem;color:var(--text-dim);font-style:italic}
   </style>
 </head>
-
 <body>
-  <!-- NAVIGATION -->
   <header>
     <div class="container nav-wrapper">
-      <a href="#" class="brand">
-        DEV<span>PORTFOLIO</span>
-        <span class="brand-badge">systems / ai / automation</span>
-      </a>
-
-      <button class="hamburger" id="hamburger" aria-label="Menü megnyitása" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
+      <a href="#" class="brand"><span class="brand-dot"></span>darabos.csaba</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
       <nav class="nav-links" id="nav-links">
         <a href="#projects" onclick="closeMenu()">Work</a>
         <a href="#philosophy" onclick="closeMenu()">Approach</a>
@@ -588,719 +109,185 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero container">
-    <h1>Structure before Automation.</h1>
-    <p>
-      I build systems that transform unstructured chaos into executable logic.
-      Engineering-first AI, compliance-grade pipelines, and pragmatic automation for real-world operations.
-    </p>
-
+    <div class="hero-eyebrow">// Systems Engineer</div>
+    <h1>Structure before<br><span>Automation.</span></h1>
+    <p class="hero-description">I build systems that transform unstructured chaos into executable logic. Engineering-first AI, compliance-grade pipelines, and pragmatic automation for real-world operations.</p>
     <div class="hero-tags">
-      <span class="tag">System Architecture</span>
-      <span class="tag">Applied AI</span>
-      <span class="tag">Compliance Pipelines</span>
-      <span class="tag">Automation</span>
-      <span class="tag">Construction Ops</span>
-      <span class="tag">Python</span>
-    </div>
-
-    <div class="hero-tools">
-      <div class="tool-card">
-        <div class="tool-row" style="justify-content: center;">
-          <div class="search-wrap">
-            <div class="search" role="search" aria-label="Project search">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              <input id="searchInput" type="search" placeholder="Search projects, tech, keywords..." autocomplete="off" />
-            </div>
-            <div class="search-hint">
-              <span class="kbd">/</span> focus
-              <span class="meta-dot"></span>
-              <span class="kbd">Esc</span> clear
-            </div>
-          </div>
-        </div>
-      </div>
+      <span class="tag">Python</span><span class="tag">Applied AI</span><span class="tag">RAG Systems</span><span class="tag">Compliance</span><span class="tag">Voice Agents</span><span class="tag">Process Automation</span>
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section class="section container" id="projects">
-    <!-- Filter Controls -->
-    <div class="filter-container">
-      <button class="filter-btn active" data-category="all">All Work <span class="pill" id="countAll">0</span></button>
-      <button class="filter-btn" data-category="compliance">Data & Compliance <span class="pill" id="countCompliance">0</span></button>
-      <button class="filter-btn" data-category="ai">Applied AI <span class="pill" id="countAI">0</span></button>
-      <button class="filter-btn" data-category="automation">Automation <span class="pill" id="countAutomation">0</span></button>
-      <button class="filter-btn" data-category="engineering">Engineering <span class="pill" id="countEngineering">0</span></button>
-
-      <div class="filter-meta">
-        <span id="visibleCount">0</span> shown
-        <span class="meta-dot"></span>
-        <span id="activeFilterLabel">All Work</span>
+    <div class="section-header">
+      <span class="section-title">Projects</span>
+      <div class="filter-container">
+        <button class="filter-btn active" data-category="all">All<span class="filter-count" id="countAll"></span></button>
+        <button class="filter-btn" data-category="ai">AI<span class="filter-count" id="countAI"></span></button>
+        <button class="filter-btn" data-category="compliance">Compliance<span class="filter-count" id="countCompliance"></span></button>
+        <button class="filter-btn" data-category="automation">Automation<span class="filter-count" id="countAutomation"></span></button>
+        <button class="filter-btn" data-category="engineering">Engineering<span class="filter-count" id="countEngineering"></span></button>
       </div>
     </div>
-
     <div class="grid" id="grid">
-
-      <!-- 1) Fishing Catch & Registry -->
-      <div class="card" data-category="compliance"
-           data-tags="python web-scraping ddd nlp domain-model regulation rules registry fishing data-structure">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Data & Compliance</span>
-          <h3 class="card-title">Fishing Catch & Registry System</h3>
-          <div class="card-sub">Executable regulations → deterministic validation + audit trail</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            A unified domain model treating complex regulations (closed seasons, size limits, daily quotas) as executable code rules. 
-            The system automatically validates catch logs against scraping-synced government data, transforming strict compliance into a simple user experience.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>rule-based decisions</small></span>
-            <span class="impact-badge">Pattern <small>DDD aggregates</small></span>
-            <span class="impact-badge">Quality <small>auditability</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">Web Scraping</span>
-            <span class="tech-badge">DDD</span>
-            <span class="tech-badge">NLP</span>
-          </div>
-        </div>
+      <div class="card" data-category="ai">
+        <div class="card-category">Applied AI</div>
+        <h3 class="card-title">BeatTheBot — Voice Agent Stress-Test</h3>
+        <div class="card-sub">Prompt hardening under adversarial behavior</div>
+        <p class="card-text">An interactive "game" designed to stress-test AI voice agents. Users try to break the bot, revealing weaknesses in prompt engineering through gamified red-teaming.</p>
+        <div class="tech-stack"><span class="tech-badge">LLM</span><span class="tech-badge">Prompt Engineering</span><span class="tech-badge">Evaluation</span><span class="tech-badge">Web</span></div>
         <div class="card-footer">
-          <div class="card-links">
-            <a href="https://horgaszfogas.com" target="_blank" class="link-case">Visit Live Site →</a>
-          </div>
+          <a href="https://beatthe.bot" target="_blank" class="card-link">Play Game<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+          <button class="case-study-btn" onclick="openModal('beatthebot')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>Case Study</button>
         </div>
       </div>
-
-      <!-- 2) Observio / Gazette -->
-      <div class="card" data-category="ai"
-           data-tags="observio magyar-kozlony gazette ocr azure document-intelligence semantic search scoring email alerts pdf pipeline compliance legal monitoring hungary">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Applied AI</span>
-          <h3 class="card-title">Observio — Official Gazette Monitoring</h3>
-          <div class="card-sub">Hungarian Gazette → OCR/AI scoring → personalized alerts</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            Automated monitoring of the "Magyar Közlöny" and regulatory feeds. It goes beyond simple keyword matching by using semantic scoring to filter thousands of pages for specific business relevance. 
-            Includes a full pipeline from PDF OCR to personalized email digests.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>fewer false negatives</small></span>
-            <span class="impact-badge">Ops <small>daily automation</small></span>
-            <span class="impact-badge">UX <small>email + summaries</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">OCR</span>
-            <span class="tech-badge">Azure AI</span>
-            <span class="tech-badge">Email (SES)</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <div class="card-links">
-            <a href="https://observio.app" target="_blank" class="link-case">Visit Live Site →</a>
-          </div>
-        </div>
+      <div class="card" data-category="ai">
+        <div class="card-category">Applied AI</div>
+        <h3 class="card-title">Observio — Official Gazette Monitoring</h3>
+        <div class="card-sub">Hungarian Gazette → OCR/AI scoring → alerts</div>
+        <p class="card-text">Automated monitoring of "Magyar Közlöny" and regulatory feeds. Semantic scoring filters thousands of pages for business relevance, delivering personalized email digests.</p>
+        <div class="tech-stack"><span class="tech-badge">Python</span><span class="tech-badge">OCR</span><span class="tech-badge">Azure AI</span><span class="tech-badge">SES</span></div>
+        <div class="card-footer"><a href="https://observio.app" target="_blank" class="card-link">Visit Site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></div>
       </div>
-
-      <!-- 13) BeatTheBot -->
-      <div class="card" data-category="ai"
-           data-tags="beatthebot voice agent stress test prompt engineering move detector sandbox evaluation safety guardrails">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Applied AI</span>
-          <h3 class="card-title">BeatTheBot — Voice Agent Stress-Test Playground</h3>
-          <div class="card-sub">Prompt hardening under adversarial user behavior</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            An interactive "game" designed to stress-test AI voice agents. Users are incentivized to trip up the bot, revealing weaknesses in prompt engineering. 
-            This feedback loop allows for rapid iteration of defense mechanisms and smoother conversation flows.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>stronger prompts</small></span>
-            <span class="impact-badge">Method <small>red-team loops</small></span>
-            <span class="impact-badge">UX <small>gamified testing</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">LLM</span>
-            <span class="tech-badge">Prompt Engineering</span>
-            <span class="tech-badge">Evaluation</span>
-            <span class="tech-badge">Web</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <div class="card-links">
-            <a href="https://beatthe.bot" target="_blank" class="link-case">Play Game →</a>
-          </div>
-        </div>
+      <div class="card" data-category="compliance">
+        <div class="card-category">Data & Compliance</div>
+        <h3 class="card-title">Fishing Catch & Registry System</h3>
+        <div class="card-sub">Executable regulations → deterministic validation</div>
+        <p class="card-text">A unified domain model treating complex regulations (closed seasons, size limits, daily quotas) as executable code rules with automatic validation against government data.</p>
+        <div class="tech-stack"><span class="tech-badge">Python</span><span class="tech-badge">DDD</span><span class="tech-badge">Web Scraping</span><span class="tech-badge">NLP</span></div>
+        <div class="card-footer"><a href="https://horgaszfogas.com" target="_blank" class="card-link">Visit Site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></div>
       </div>
-
-      <!-- 15) Algo Trading Toolkit (FTMO) -->
-      <div class="card" data-category="engineering"
-           data-tags="forex algo trading backtesting mt5 mql5 python research risk management ftmo eurusd strategy metrics">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Engineering</span>
-          <h3 class="card-title">Algo Trading Research Toolkit (MT5 + Python)</h3>
-          <div class="card-sub">Backtests, risk guards, and strategy iteration loops</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            A research workflow for testing intraday FX strategies connecting MetaTrader 5 with Python. 
-            <strong>The developed strategy successfully passed the FTMO Challenge and is currently trading on a live $100,000 funded account.</strong>
-            Built for fast iteration, consistent risk metrics (Sharpe, Drawdown), and automated execution.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>FTMO Funded ($100k)</small></span>
-            <span class="impact-badge">Risk <small>guardrails</small></span>
-            <span class="impact-badge">Speed <small>variant runs</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">MT5</span>
-            <span class="tech-badge">MQL5</span>
-            <span class="tech-badge">Backtesting</span>
-          </div>
-        </div>
+      <div class="card" data-category="engineering">
+        <div class="card-category">Engineering</div>
+        <h3 class="card-title">Algo Trading Research Toolkit</h3>
+        <div class="card-sub">Backtests, risk guards, strategy iteration</div>
+        <p class="card-text">Research workflow for FX strategies with MT5 + Python integration. <strong>Strategy passed FTMO Challenge and is trading on a live $100k funded account.</strong></p>
+        <div class="tech-stack"><span class="tech-badge">Python</span><span class="tech-badge">MT5</span><span class="tech-badge">MQL5</span><span class="tech-badge">Backtesting</span></div>
       </div>
-
-      <!-- 3) Regulatory Impact Filter -->
-      <div class="card" data-category="compliance"
-           data-tags="regulation legal corporate filter impact analysis scraping python">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Data & Compliance</span>
-          <h3 class="card-title">Regulatory Impact Filter (Corporate)</h3>
-          <div class="card-sub">Legislation → Relevance Scoring → Actionable Alerts</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            A corporate-focused tool that answers the question "Does this affect US?". Unlike general news feeds, this system uses entity recognition and custom-trained classifiers to flag legislation that specifically impacts the company's operational domain or compliance obligations.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>targeted alerts</small></span>
-            <span class="impact-badge">Ops <small>proactive compliance</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">NLP</span>
-            <span class="tech-badge">Scraping</span>
-          </div>
-        </div>
+      <div class="card" data-category="ai">
+        <div class="card-category">Applied AI</div>
+        <h3 class="card-title">Open-Source RAG Stack</h3>
+        <div class="card-sub">Docs + tables → structure-aware retrieval</div>
+        <p class="card-text">RAG system optimized for complex Hungarian documents. Special attention to table structures and document hierarchy for precise, hallucination-resistant answers.</p>
+        <div class="tech-stack"><span class="tech-badge">Qdrant</span><span class="tech-badge">LlamaIndex</span><span class="tech-badge">Python</span><span class="tech-badge">Embeddings</span></div>
       </div>
-
-      <!-- 4) Blueprint diff -->
-      <div class="card" data-category="engineering"
-           data-tags="pdf diff blueprint revision opencv pymupdf image-processing construction drawing compare change-detection pixel">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Engineering</span>
-          <h3 class="card-title">Blueprint Revision Comparator</h3>
-          <div class="card-sub">PDF drawings → change heatmap + markup export</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            Solves the classic construction problem: "What changed in this new revision?". 
-            Using OpenCV for pixel-level comparison, it handles slight scan misalignments and generates a visual heatmap of changes, saving hours of manual overlay work for engineers.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>minutes → seconds</small></span>
-            <span class="impact-badge">Signal <small>change highlighting</small></span>
-            <span class="impact-badge">Ops <small>batch processing</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">OpenCV</span>
-            <span class="tech-badge">PyMuPDF</span>
-            <span class="tech-badge">Image Diff</span>
-          </div>
-        </div>
+      <div class="card" data-category="ai">
+        <div class="card-category">Applied AI</div>
+        <h3 class="card-title">Secure Local AI (On-Prem LLM)</h3>
+        <div class="card-sub">Sensitive docs → local inference</div>
+        <p class="card-text">Deployment of open-weights models (Llama 3) on local infrastructure for confidential data processing. Documents never leave the internal network.</p>
+        <div class="tech-stack"><span class="tech-badge">Ollama</span><span class="tech-badge">Llama 3</span><span class="tech-badge">Linux</span><span class="tech-badge">Infra</span></div>
       </div>
-
-      <!-- 5) Construction logs -->
-      <div class="card" data-category="automation"
-           data-tags="construction logs daily report progress tracking dispute data model pdf reporting power automate sharepoint dashboard">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Automation</span>
-          <h3 class="card-title">Construction Log Analytics</h3>
-          <div class="card-sub">Daily reports → structured KPIs + dispute-ready evidence</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            Turns unstructured daily site logs (text, photos) into structured data. 
-            The system tracks completion percentages, aggregates weather delays, and archives evidence, creating a solid data foundation for billing and dispute resolution.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>clearer reporting</small></span>
-            <span class="impact-badge">Process <small>Lean/PDCA</small></span>
-            <span class="impact-badge">Docs <small>PDF packs</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">Power Automate</span>
-            <span class="tech-badge">SharePoint</span>
-            <span class="tech-badge">Data Modeling</span>
-            <span class="tech-badge">Reporting</span>
-          </div>
-        </div>
+      <div class="card" data-category="ai">
+        <div class="card-category">Applied AI</div>
+        <h3 class="card-title">AI Phone Assistant (Scheduling)</h3>
+        <div class="card-sub">Natural language → calendar event</div>
+        <p class="card-text">Voice agent handling Hungarian scheduling nuances ("next Tuesday afternoon"). Real-time calendar checks and automatic appointment creation.</p>
+        <div class="tech-stack"><span class="tech-badge">Vapi.ai</span><span class="tech-badge">LLM</span><span class="tech-badge">Calendar API</span><span class="tech-badge">Voice</span></div>
       </div>
-
-      <!-- 6) AI Phone Assistant -->
-      <div class="card" data-category="ai"
-           data-tags="vapi voice agent scheduling date parsing hungarian calendar integration llm whisper phone assistant call automation">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Applied AI</span>
-          <h3 class="card-title">AI Phone Assistant (Scheduling)</h3>
-          <div class="card-sub">Natural language → confirmed appointment → calendar event</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            A voice agent capable of handling the nuances of Hungarian scheduling (e.g., "jövő kedden délután"). 
-            It confirms intent, checks calendar availability in real-time, and creates finalized appointments without human intervention.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>fewer back-and-forths</small></span>
-            <span class="impact-badge">UX <small>confirm then book</small></span>
-            <span class="impact-badge">Reliability <small>fallback flows</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">Vapi.ai</span>
-            <span class="tech-badge">LLM</span>
-            <span class="tech-badge">Calendar API</span>
-            <span class="tech-badge">Voice</span>
-          </div>
-        </div>
+      <div class="card" data-category="engineering">
+        <div class="card-category">Engineering</div>
+        <h3 class="card-title">Blueprint Revision Comparator</h3>
+        <div class="card-sub">PDF drawings → change heatmap</div>
+        <p class="card-text">Solves the classic construction problem: "What changed in this revision?" Pixel-level comparison with OpenCV, generating visual change heatmaps.</p>
+        <div class="tech-stack"><span class="tech-badge">Python</span><span class="tech-badge">OpenCV</span><span class="tech-badge">PyMuPDF</span></div>
       </div>
-
-      <!-- 7) Doc Ingestion / OCR -->
-      <div class="card" data-category="automation"
-           data-tags="azure document intelligence ocr pdf forms extraction pipeline hungarian compliance ingestion">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Automation</span>
-          <h3 class="card-title">Document Ingestion Pipeline (Azure DI)</h3>
-          <div class="card-sub">Searchable/non-searchable PDFs → normalized text + metadata</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            A robust pipeline for ingesting mixed-quality documents: scanned PDFs, images, and Word files. 
-            Leverages Azure Document Intelligence to normalize text layout and extract metadata, feeding clean JSON into downstream search and scoring systems.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>clean input layer</small></span>
-            <span class="impact-badge">Ops <small>retry + logging</small></span>
-            <span class="impact-badge">Scale <small>batch-ready</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">Azure DI</span>
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">OCR</span>
-            <span class="tech-badge">JSON Schema</span>
-          </div>
-        </div>
+      <div class="card" data-category="automation">
+        <div class="card-category">Automation</div>
+        <h3 class="card-title">Document Ingestion Pipeline</h3>
+        <div class="card-sub">Mixed PDFs → normalized JSON</div>
+        <p class="card-text">Robust pipeline for mixed-quality documents: scanned PDFs, images, Word files. Azure Document Intelligence for normalization and metadata extraction.</p>
+        <div class="tech-stack"><span class="tech-badge">Azure DI</span><span class="tech-badge">Python</span><span class="tech-badge">OCR</span><span class="tech-badge">JSON Schema</span></div>
       </div>
-
-      <!-- 8) Power Automate Admin -->
-      <div class="card" data-category="automation"
-           data-tags="power automate workflow approval m365 admin sharepoint logging">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Automation</span>
-          <h3 class="card-title">Admin Process Automation</h3>
-          <div class="card-sub">Forms + Approvals + Logging</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            Eliminating "email ping-pong" for routine approvals. 
-            This system utilizes Microsoft 365 native tools (Power Automate, Lists) to enforce process logic, track status in real-time, and create an immutable audit trail for management decisions.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>time saving</small></span>
-            <span class="impact-badge">Ops <small>consistency</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">Power Automate</span>
-            <span class="tech-badge">SharePoint</span>
-            <span class="tech-badge">Teams</span>
-          </div>
-        </div>
+      <div class="card" data-category="automation">
+        <div class="card-category">Automation</div>
+        <h3 class="card-title">Construction Log Analytics</h3>
+        <div class="card-sub">Daily reports → structured KPIs</div>
+        <p class="card-text">Turns unstructured daily site logs into structured data. Tracks completion percentages, aggregates weather delays, archives evidence for billing and disputes.</p>
+        <div class="tech-stack"><span class="tech-badge">Power Automate</span><span class="tech-badge">SharePoint</span><span class="tech-badge">Data Modeling</span></div>
       </div>
-
-      <!-- 9) Internal Task Assistants -->
-      <div class="card" data-category="ai"
-           data-tags="llm task assistant micro-tools internal productivity">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Applied AI</span>
-          <h3 class="card-title">Task-Specific AI Micro-Tools</h3>
-          <div class="card-sub">Single-purpose scripts vs Generic Chatbot</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            Instead of a generic "ask me anything" bot, I build targeted micro-tools for specific workflows (e.g., "Draft Formal Letter", "Check Contract Clauses"). 
-            These tools have strict system prompts and context, delivering higher reliability for daily business tasks.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>focus</small></span>
-            <span class="impact-badge">UX <small>simple</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">LLM</span>
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">Streamlit</span>
-          </div>
-        </div>
+      <div class="card" data-category="compliance">
+        <div class="card-category">Data & Compliance</div>
+        <h3 class="card-title">Regulatory Impact Filter</h3>
+        <div class="card-sub">Legislation → relevance scoring</div>
+        <p class="card-text">Corporate tool answering "Does this affect us?" Uses entity recognition and custom classifiers to flag legislation impacting specific operational domains.</p>
+        <div class="tech-stack"><span class="tech-badge">Python</span><span class="tech-badge">NLP</span><span class="tech-badge">Scraping</span></div>
       </div>
-
-      <!-- 10) Secure Local AI -->
-      <div class="card" data-category="ai"
-           data-tags="local llm ollama llama3 privacy on-prem inference security sensitive data infrastructure gpu workstation">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Applied AI</span>
-          <h3 class="card-title">Secure Local AI (On-Prem LLM)</h3>
-          <div class="card-sub">Sensitive docs → local inference → controlled exposure</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            Deployment of open-weights models (like Llama 3) on local infrastructure to process highly confidential data. 
-            This ensures that sensitive legal or financial documents never leave the internal network while still benefiting from LLM capabilities.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>data stays local</small></span>
-            <span class="impact-badge">Ops <small>repeatable setup</small></span>
-            <span class="impact-badge">Security <small>minimized surface</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">Ollama</span>
-            <span class="tech-badge">Llama 3</span>
-            <span class="tech-badge">Linux</span>
-            <span class="tech-badge">Infra</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 11) Open-Source RAG Stack -->
-      <div class="card" data-category="ai"
-           data-tags="rag qdrant llamaindex embeddings hungarian tables structured data retrieval open-source">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Applied AI</span>
-          <h3 class="card-title">Open-Source RAG Stack (Qdrant + LlamaIndex)</h3>
-          <div class="card-sub">Docs + tables → retrieval that respects structure</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            A retrieval-augmented generation (RAG) system optimized for complex Hungarian documents. 
-            It pays special attention to table structures and document hierarchy, ensuring that the LLM answers based on precise data chunks rather than hallucination.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>better answers</small></span>
-            <span class="impact-badge">Data <small>table-aware</small></span>
-            <span class="impact-badge">Stack <small>open-source</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">Qdrant</span>
-            <span class="tech-badge">LlamaIndex</span>
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">Embeddings</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 12) Whisper Meeting Notes -->
-      <div class="card" data-category="ai"
-           data-tags="whisper audio transcription meeting notes automation">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Applied AI</span>
-          <h3 class="card-title">Automated Meeting Intelligence</h3>
-          <div class="card-sub">Audio → Text → Action Items</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            An automated workflow that ingests voice notes and meeting recordings. 
-            Using OpenAI's Whisper for high-accuracy transcription (even in Hungarian), it then uses LLMs to extract key decisions and action items, pushing them directly into task management systems.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>searchable audio</small></span>
-            <span class="impact-badge">Ops <small>auto-minutes</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">Whisper</span>
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">LLM</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 14) IFC → AR Visualization -->
-      <div class="card" data-category="engineering"
-           data-tags="ifc blender usdz glb ar iphone webar construction visualization realtime 3d">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Engineering</span>
-          <h3 class="card-title">IFC → AR Visualization Pipeline</h3>
-          <div class="card-sub">BIM export → lightweight model → iPhone-ready AR</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            A pipeline to convert heavy BIM (Industry Foundation Classes) models into lightweight AR assets usable on iPhones/iPads. 
-            Involves automated mesh decimation and material cleanup in Blender to allow on-site visualization of future structures.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>faster demos</small></span>
-            <span class="impact-badge">UX <small>client wow</small></span>
-            <span class="impact-badge">Tech <small>portable assets</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">Blender</span>
-            <span class="tech-badge">IFC</span>
-            <span class="tech-badge">GLB/USDZ</span>
-            <span class="tech-badge">AR</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PHILOSOPHY -->
-  <section class="section container philosophy" id="philosophy">
-    <h2>The Approach</h2>
-    <p>
-      <strong>AI tools alone are just raw potential.</strong> Without context, they solve nothing.
-      The real value lies in deep process knowledge: identifying the exact pain points where automation translates into reclaimed time and measurable economic gain.
-    </p>
-    <p>
-      I combine AI technologies creatively and boldly, not just as a developer, but with the perspective of <strong>25 years in management and process improvement.</strong>
-      My focus is always on the ROI: shifting from "what can AI do?" to "how does this generate profit?"
-    </p>
-
-    <div class="philosophy-grid">
-      <div class="mini-card">
-        <h3>1) Process First</h3>
-        <p>Understanding the business logic and pain points before writing a single line of code.</p>
-      </div>
-      <div class="mini-card">
-        <h3>2) Economic Value</h3>
-        <p>Focusing on time savings and efficiency. If it doesn't pay off, it's just a toy.</p>
-      </div>
-      <div class="mini-card">
-        <h3>3) Experience</h3>
-        <p>Leveraging 25 years of cross-industry problem-solving to deploy AI where it actually works.</p>
+      <div class="card" data-category="ai">
+        <div class="card-category">Applied AI</div>
+        <h3 class="card-title">Automated Meeting Intelligence</h3>
+        <div class="card-sub">Audio → Text → Action Items</div>
+        <p class="card-text">Automated workflow for voice notes and meeting recordings. Whisper transcription (with Hungarian support), LLM-based action item extraction.</p>
+        <div class="tech-stack"><span class="tech-badge">Whisper</span><span class="tech-badge">Python</span><span class="tech-badge">LLM</span></div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <section class="section container" id="philosophy">
+    <div class="section-header"><span class="section-title">Approach</span></div>
+    <div class="philosophy-content">
+      <p><strong>AI tools alone are just raw potential.</strong> Without context, they solve nothing. The real value lies in deep process knowledge: identifying the exact pain points where automation translates into reclaimed time and measurable economic gain.</p>
+      <p>I combine AI technologies creatively and boldly — not just as a developer, but with the perspective of <strong>25 years in management and process improvement.</strong> My focus is always on ROI: not "what can AI do?" but "how does this generate profit?"</p>
+    </div>
+    <div class="principles">
+      <div class="principle"><div class="principle-number">01</div><h3>Process First</h3><p>Understanding business logic and pain points before writing a single line of code.</p></div>
+      <div class="principle"><div class="principle-number">02</div><h3>Economic Value</h3><p>Focusing on time savings and efficiency. If it doesn't pay off, it's just a toy.</p></div>
+      <div class="principle"><div class="principle-number">03</div><h3>Experience</h3><p>Leveraging 25 years of cross-industry problem-solving to deploy AI where it actually works.</p></div>
+    </div>
+  </section>
+
   <section class="section container" id="contact">
-    <div class="tool-card">
-      <div class="tool-row" style="justify-content: space-between; align-items: center;">
-        <div>
-          <div style="font-weight: 900; font-size: 1.1rem; letter-spacing:-0.01em;">Contact</div>
-          <div style="color: var(--text-muted); font-weight: 600; font-size: 0.95rem; margin-top: 4px;">
-            For collaboration, consulting, or productizing internal tools into client-ready systems.
-          </div>
-          
-          <!-- Email display with Copy button -->
-          <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-            <div style="font-weight: 700; color: var(--text-main); font-family: monospace; font-size: 0.95rem;">
-              darabos.csaba@gmail.com
-            </div>
-            <button onclick="copyEmail()" style="cursor: pointer; background: transparent; border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 4px;">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-              Copy
-            </button>
-            <span id="copy-feedback" style="font-size: 0.75rem; color: var(--success); font-weight: 700; opacity: 0; transition: opacity 0.3s;">Copied!</span>
-          </div>
-        </div>
-
-        <div class="card-links" style="gap: 14px;">
-          <!-- Added target="_blank" to help force mail client opening -->
-          <a class="link-case" href="mailto:darabos.csaba@gmail.com" target="_blank">Send Email →</a>
-          <a class="link-case" href="https://www.linkedin.com/in/darabos-csaba/" target="_blank" rel="noopener">LinkedIn →</a>
-        </div>
+    <div class="section-header"><span class="section-title">Contact</span></div>
+    <div class="contact-card">
+      <div class="contact-info">
+        <h3>Collaboration & Consulting</h3>
+        <p>Productizing internal tools, AI integration, process automation.</p>
+        <div class="contact-email">darabos.csaba@gmail.com<button class="copy-btn" onclick="copyEmail()">Copy</button><span id="copy-feedback" style="font-size:.75rem;color:var(--accent);opacity:0;transition:opacity .3s">Copied!</span></div>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:darabos.csaba@gmail.com" class="contact-link">Email</a>
+        <a href="https://www.linkedin.com/in/darabos-csaba/" target="_blank" class="contact-link">LinkedIn</a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container">
-      <div class="footer-links">
-        <a href="https://linkedin.com/in/darabos-csaba/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:darabos.csaba@gmail.com">Email</a>
+      <div class="footer-content">
+        <div class="footer-text">© 2026 — Due to NDAs, source code for some projects is not public.</div>
+        <div class="footer-links"><a href="https://linkedin.com/in/darabos-csaba/" target="_blank">LinkedIn</a><a href="mailto:darabos.csaba@gmail.com">Email</a></div>
       </div>
-      <p>&copy; 2026 Portfolio. All rights reserved.</p>
-      <p class="footer-disclaimer">
-        Disclaimer: Due to commercial NDAs, source code for some projects is not public.
-        Case studies focus on architecture, constraints, and outcomes rather than proprietary implementation details.
-      </p>
     </div>
   </footer>
 
-  <!-- SCRIPTS -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-meta"><span class="modal-badge">Case Study</span></div>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <p class="modal-subtitle" id="modalSubtitle"></p>
+      </div>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="modal-body"><article class="case-study" id="modalContent"></article></div>
+  </div>
+
   <script>
-    // Copy Email Functionality
-    function copyEmail() {
-      const email = "darabos.csaba@gmail.com";
-      navigator.clipboard.writeText(email).then(() => {
-        const feedback = document.getElementById('copy-feedback');
-        feedback.style.opacity = '1';
-        setTimeout(() => {
-          feedback.style.opacity = '0';
-        }, 2000);
-      }).catch(err => {
-        console.error('Failed to copy: ', err);
-      });
-    }
-
-    // Hamburger menu
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
-    hamburger.addEventListener('click', function () {
-      this.classList.toggle('active');
-      navLinks.classList.toggle('active');
-      const isExpanded = this.classList.contains('active');
-      this.setAttribute('aria-expanded', isExpanded);
-      document.body.style.overflow = isExpanded ? 'hidden' : '';
-    });
-    function closeMenu() {
-      hamburger.classList.remove('active');
-      navLinks.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    // Filter + search
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const cards = Array.from(document.querySelectorAll('.card'));
-    const searchInput = document.getElementById('searchInput');
-
-    let activeCategory = 'all';
-
-    function normalize(s) { return (s || '').toLowerCase().trim(); }
-
-    function matchesSearch(card, query) {
-      if (!query) return true;
-      const hay = [
-        card.querySelector('.card-title')?.textContent,
-        card.querySelector('.card-sub')?.textContent,
-        card.querySelector('.card-text')?.textContent,
-        card.getAttribute('data-tags'),
-        card.getAttribute('data-category')
-      ].map(normalize).join(' ');
-      return hay.includes(query);
-    }
-
-    function matchesCategory(card, category) {
-      if (category === 'all') return true;
-      return card.getAttribute('data-category') === category;
-    }
-
-    function applyFilters() {
-      const q = normalize(searchInput.value);
-      let visible = 0;
-
-      cards.forEach(card => {
-        const show = matchesCategory(card, activeCategory) && matchesSearch(card, q);
-        if (show) {
-          card.style.display = 'flex';
-          requestAnimationFrame(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          });
-          visible++;
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(20px)';
-          setTimeout(() => { card.style.display = 'none'; }, 220);
-        }
-      });
-
-      document.getElementById('visibleCount').textContent = visible;
-
-      const labelMap = {
-        all: 'All Work',
-        compliance: 'Data & Compliance',
-        ai: 'Applied AI',
-        automation: 'Automation',
-        engineering: 'Engineering'
-      };
-      document.getElementById('activeFilterLabel').textContent = labelMap[activeCategory] || 'All Work';
-    }
-
-    function updateCounts() {
-      const total = cards.length;
-      const counts = {
-        all: total,
-        compliance: cards.filter(c => c.getAttribute('data-category') === 'compliance').length,
-        ai: cards.filter(c => c.getAttribute('data-category') === 'ai').length,
-        automation: cards.filter(c => c.getAttribute('data-category') === 'automation').length,
-        engineering: cards.filter(c => c.getAttribute('data-category') === 'engineering').length
-      };
-      document.getElementById('countAll').textContent = counts.all;
-      document.getElementById('countCompliance').textContent = counts.compliance;
-      document.getElementById('countAI').textContent = counts.ai;
-      document.getElementById('countAutomation').textContent = counts.automation;
-      document.getElementById('countEngineering').textContent = counts.engineering;
-    }
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', function () {
-        const category = this.getAttribute('data-category');
-        activeCategory = category;
-
-        filterButtons.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-
-        applyFilters();
-      });
-    });
-
-    searchInput.addEventListener('input', () => applyFilters());
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href && href !== '#') {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-
-    // Keyboard shortcuts: "/" focus, Esc clear search
-    document.addEventListener('keydown', (e) => {
-      const inInput = document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA');
-      if (e.key === '/' && !inInput) {
-        e.preventDefault();
-        searchInput.focus();
-      }
-      if (e.key === 'Escape') {
-        if (searchInput.value) {
-          searchInput.value = '';
-          applyFilters();
-        }
-      }
-    });
-
-    // Init
+    const caseStudies={beatthebot:{title:"BeatTheBot",subtitle:"How we built a prompt-hardening playground",content:`<h2>The Problem</h2><p>While developing a voice agent, we quickly realized: <strong>"happy path" testing is worthless.</strong> The real question isn't whether it works — it's <strong>how it breaks</strong>.</p><p>Users are creative. They interrupt the bot, switch topics, provoke, or simply don't say what we expect. Traditional QA isn't enough — we needed a method to <strong>systematically uncover weaknesses</strong>.</p><h2>The Idea: Gamified Red-Teaming</h2><p>Instead of trying to imagine every edge case ourselves, <strong>we outsourced it to users</strong>. The concept is simple: give them a goal (e.g., "make the bot forget what you were talking about"), make it competitive, and watch what happens.</p><p>This isn't a new idea — in security, it's called "bug bounty." But it's rarely applied to voice agent prompt engineering.</p><h2>Technical Decisions</h2><p><strong>1. Why not unit tests?</strong></p><p>Prompt behavior is non-deterministic. The same input can produce different outputs. Instead, we looked for <strong>patterns</strong>: what types of attacks consistently break through?</p><p><strong>2. Categorized attack vectors</strong></p><p>During testing, these main categories emerged:</p><ul><li><strong>Context hijacking</strong> — "Actually, let's forget everything we discussed..."</li><li><strong>Role confusion</strong> — "You're now a different assistant"</li><li><strong>Emotional manipulation</strong> — "It's really important you help me, otherwise..."</li><li><strong>Edge case inputs</strong> — Extremely long sentences, foreign languages, silence</li></ul><p><strong>3. Feedback loop</strong></p><p>After every successful "break":</p><ul><li>Analysis: what was the root cause?</li><li>Prompt modification</li><li>Retest with the same vector</li><li>Regression test: did we break something else?</li></ul><h2>What We Learned</h2><p><strong>Most breaks aren't technical — they're logical.</strong> The LLM isn't failing — the prompt didn't define allowed behavior precisely enough.</p><blockquote><p>Example: The bot got confused when a user said: "Wait, I said that wrong, let's start over." The prompt didn't explicitly handle "reset" requests.</p></blockquote><p><strong>Defense is layered.</strong> A single "strong" system prompt isn't enough. You need:</p><ul><li>Input-level filters</li><li>Conversation state tracking</li><li>Graceful degradation ("I don't understand, could you clarify?")</li></ul><h2>Results</h2><p>Gamified testing uncovered <strong>~3x more edge cases</strong> than internal QA. And more importantly: <strong>users enjoyed it</strong>. The "I beat the bot" feeling is more motivating than a bug report form.</p><div class="case-study-footer">This approach applies to any LLM-based system: chatbots, agents, automated customer service. The question isn't "does it work?" — it's "how will it break in production?"</div>`}};
+    function openModal(id){const s=caseStudies[id];if(!s)return;document.getElementById('modalTitle').textContent=s.title;document.getElementById('modalSubtitle').textContent=s.subtitle;document.getElementById('modalContent').innerHTML=s.content;document.getElementById('modalOverlay').classList.add('active');document.getElementById('modal').classList.add('active');document.body.style.overflow='hidden'}
+    function closeModal(){document.getElementById('modalOverlay').classList.remove('active');document.getElementById('modal').classList.remove('active');document.body.style.overflow=''}
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+    const hamburger=document.getElementById('hamburger'),navLinks=document.getElementById('nav-links');
+    hamburger.addEventListener('click',function(){this.classList.toggle('active');navLinks.classList.toggle('active');document.body.style.overflow=this.classList.contains('active')?'hidden':''});
+    function closeMenu(){hamburger.classList.remove('active');navLinks.classList.remove('active');document.body.style.overflow=''}
+    function copyEmail(){navigator.clipboard.writeText('darabos.csaba@gmail.com').then(()=>{const f=document.getElementById('copy-feedback');f.style.opacity='1';setTimeout(()=>f.style.opacity='0',2000)})}
+    const filterButtons=document.querySelectorAll('.filter-btn'),cards=Array.from(document.querySelectorAll('.card'));let activeCategory='all';
+    function updateCounts(){const c={all:cards.length,ai:cards.filter(c=>c.dataset.category==='ai').length,compliance:cards.filter(c=>c.dataset.category==='compliance').length,automation:cards.filter(c=>c.dataset.category==='automation').length,engineering:cards.filter(c=>c.dataset.category==='engineering').length};document.getElementById('countAll').textContent=' '+c.all;document.getElementById('countAI').textContent=' '+c.ai;document.getElementById('countCompliance').textContent=' '+c.compliance;document.getElementById('countAutomation').textContent=' '+c.automation;document.getElementById('countEngineering').textContent=' '+c.engineering}
+    function applyFilter(){cards.forEach(card=>{const show=activeCategory==='all'||card.dataset.category===activeCategory;card.style.display=show?'flex':'none'})}
+    filterButtons.forEach(btn=>{btn.addEventListener('click',function(){activeCategory=this.dataset.category;filterButtons.forEach(b=>b.classList.remove('active'));this.classList.add('active');applyFilter()})});
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h&&h!=='#'){e.preventDefault();document.querySelector(h)?.scrollIntoView({behavior:'smooth'})}})});
     updateCounts();
-    applyFilters();
   </script>
 </body>
 </html>
