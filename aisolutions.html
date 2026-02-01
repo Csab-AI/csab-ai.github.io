@@ -1121,16 +1121,30 @@
   <!-- CONTACT -->
   <section class="section container" id="contact">
     <div class="tool-card">
-      <div class="tool-row" style="justify-content: space-between;">
+      <div class="tool-row" style="justify-content: space-between; align-items: center;">
         <div>
           <div style="font-weight: 900; font-size: 1.1rem; letter-spacing:-0.01em;">Contact</div>
           <div style="color: var(--text-muted); font-weight: 600; font-size: 0.95rem; margin-top: 4px;">
             For collaboration, consulting, or productizing internal tools into client-ready systems.
           </div>
+          
+          <!-- Email display with Copy button -->
+          <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <div style="font-weight: 700; color: var(--text-main); font-family: monospace; font-size: 0.95rem;">
+              darabos.csaba@gmail.com
+            </div>
+            <button onclick="copyEmail()" style="cursor: pointer; background: transparent; border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 4px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copy
+            </button>
+            <span id="copy-feedback" style="font-size: 0.75rem; color: var(--success); font-weight: 700; opacity: 0; transition: opacity 0.3s;">Copied!</span>
+          </div>
         </div>
+
         <div class="card-links" style="gap: 14px;">
-          <a class="link-case" href="mailto:darabos.csaba@gmail.com">Email →</a>
-          <a class="link-muted" href="#projects">Browse work</a>
+          <!-- Added target="_blank" to help force mail client opening -->
+          <a class="link-case" href="mailto:darabos.csaba@gmail.com" target="_blank">Send Email →</a>
+          <a class="link-case" href="https://www.linkedin.com/in/darabos-csaba/" target="_blank" rel="noopener">LinkedIn →</a>
         </div>
       </div>
     </div>
@@ -1153,6 +1167,20 @@
 
   <!-- SCRIPTS -->
   <script>
+    // Copy Email Functionality
+    function copyEmail() {
+      const email = "darabos.csaba@gmail.com";
+      navigator.clipboard.writeText(email).then(() => {
+        const feedback = document.getElementById('copy-feedback');
+        feedback.style.opacity = '1';
+        setTimeout(() => {
+          feedback.style.opacity = '0';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
     // Hamburger menu
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
