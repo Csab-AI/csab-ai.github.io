@@ -656,8 +656,8 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            A unified domain model treating regulations as executable rules.
-            Designed for messy real-life inputs (missing fields, conflicting sources), with explainable outcomes.
+            A unified domain model treating complex regulations (closed seasons, size limits, daily quotas) as executable code rules. 
+            The system automatically validates catch logs against scraping-synced government data, transforming strict compliance into a simple user experience.
           </p>
           <div class="impact">
             <span class="impact-badge">Outcome <small>rule-based decisions</small></span>
@@ -673,7 +673,7 @@
         </div>
         <div class="card-footer">
           <div class="card-links">
-            <a href="./case-studies/horgaszfogas/index.html" class="link-case">View Case Study →</a>
+            <a href="https://horgaszfogas.com" target="_blank" class="link-case">Visit Live Site →</a>
           </div>
         </div>
       </div>
@@ -689,8 +689,8 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            Automated monitoring of the Magyar Közlöny and related regulatory feeds.
-            OCR for scanned PDFs, semantic scoring, and user-specific keyword profiles with explainable results.
+            Automated monitoring of the "Magyar Közlöny" and regulatory feeds. It goes beyond simple keyword matching by using semantic scoring to filter thousands of pages for specific business relevance. 
+            Includes a full pipeline from PDF OCR to personalized email digests.
           </p>
           <div class="impact">
             <span class="impact-badge">Outcome <small>fewer false negatives</small></span>
@@ -701,18 +701,79 @@
             <span class="tech-badge">Python</span>
             <span class="tech-badge">OCR</span>
             <span class="tech-badge">Azure AI</span>
-            <span class="tech-badge">SQLite</span>
-            <span class="tech-badge">Email (SES/DKIM)</span>
+            <span class="tech-badge">Email (SES)</span>
           </div>
         </div>
         <div class="card-footer">
           <div class="card-links">
-            <a href="./case-studies/observio/index.html" class="link-case">View Case Study →</a>
+            <a href="https://observio.app" target="_blank" class="link-case">Visit Live Site →</a>
           </div>
         </div>
       </div>
 
-      <!-- 3) Regulatory Impact Filter (New) -->
+      <!-- 13) BeatTheBot -->
+      <div class="card" data-category="ai"
+           data-tags="beatthebot voice agent stress test prompt engineering move detector sandbox evaluation safety guardrails">
+        <div class="card-topline"></div>
+        <div class="card-header">
+          <span class="card-category"><span class="cat-dot"></span>Applied AI</span>
+          <h3 class="card-title">BeatTheBot — Voice Agent Stress-Test Playground</h3>
+          <div class="card-sub">Prompt hardening under adversarial user behavior</div>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            An interactive "game" designed to stress-test AI voice agents. Users are incentivized to trip up the bot, revealing weaknesses in prompt engineering. 
+            This feedback loop allows for rapid iteration of defense mechanisms and smoother conversation flows.
+          </p>
+          <div class="impact">
+            <span class="impact-badge">Outcome <small>stronger prompts</small></span>
+            <span class="impact-badge">Method <small>red-team loops</small></span>
+            <span class="impact-badge">UX <small>gamified testing</small></span>
+          </div>
+          <div class="tech-stack">
+            <span class="tech-badge">LLM</span>
+            <span class="tech-badge">Prompt Engineering</span>
+            <span class="tech-badge">Evaluation</span>
+            <span class="tech-badge">Web</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-links">
+            <a href="https://beatthe.bot" target="_blank" class="link-case">Play Game →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15) Algo Trading Toolkit (FTMO) -->
+      <div class="card" data-category="engineering"
+           data-tags="forex algo trading backtesting mt5 mql5 python research risk management ftmo eurusd strategy metrics">
+        <div class="card-topline"></div>
+        <div class="card-header">
+          <span class="card-category"><span class="cat-dot"></span>Engineering</span>
+          <h3 class="card-title">Algo Trading Research Toolkit (MT5 + Python)</h3>
+          <div class="card-sub">Backtests, risk guards, and strategy iteration loops</div>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            A research workflow for testing intraday FX strategies connecting MetaTrader 5 with Python. 
+            <strong>The developed strategy successfully passed the FTMO Challenge and is currently trading on a live $100,000 funded account.</strong>
+            Built for fast iteration, consistent risk metrics (Sharpe, Drawdown), and automated execution.
+          </p>
+          <div class="impact">
+            <span class="impact-badge">Outcome <small>FTMO Funded ($100k)</small></span>
+            <span class="impact-badge">Risk <small>guardrails</small></span>
+            <span class="impact-badge">Speed <small>variant runs</small></span>
+          </div>
+          <div class="tech-stack">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">MT5</span>
+            <span class="tech-badge">MQL5</span>
+            <span class="tech-badge">Backtesting</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3) Regulatory Impact Filter -->
       <div class="card" data-category="compliance"
            data-tags="regulation legal corporate filter impact analysis scraping python">
         <div class="card-topline"></div>
@@ -723,8 +784,7 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            Focused monitoring tool for corporate environments. Filters legislative changes not just by keywords, but by business impact relevance.
-            "Does this affect OUR operations?"
+            A corporate-focused tool that answers the question "Does this affect US?". Unlike general news feeds, this system uses entity recognition and custom-trained classifiers to flag legislation that specifically impacts the company's operational domain or compliance obligations.
           </p>
           <div class="impact">
             <span class="impact-badge">Outcome <small>targeted alerts</small></span>
@@ -749,8 +809,8 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            Solves the “what changed?” problem for construction plans.
-            Automated pixel-level comparison with noise handling (scan shifts, line thickness, stamps).
+            Solves the classic construction problem: "What changed in this new revision?". 
+            Using OpenCV for pixel-level comparison, it handles slight scan misalignments and generates a visual heatmap of changes, saving hours of manual overlay work for engineers.
           </p>
           <div class="impact">
             <span class="impact-badge">Outcome <small>minutes → seconds</small></span>
@@ -777,8 +837,8 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            Structured handling of daily site reports: progress (%), blockers, risks, and dispute-resolution evidence.
-            Output: dashboards + PDF summaries for stakeholders.
+            Turns unstructured daily site logs (text, photos) into structured data. 
+            The system tracks completion percentages, aggregates weather delays, and archives evidence, creating a solid data foundation for billing and dispute resolution.
           </p>
           <div class="impact">
             <span class="impact-badge">Outcome <small>clearer reporting</small></span>
@@ -805,8 +865,8 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            Voice agent with robust Hungarian date intent handling (e.g., “this Thursday”) and confirmation patterns.
-            Integrates with business calendars and produces clean reminders.
+            A voice agent capable of handling the nuances of Hungarian scheduling (e.g., "jövő kedden délután"). 
+            It confirms intent, checks calendar availability in real-time, and creates finalized appointments without human intervention.
           </p>
           <div class="impact">
             <span class="impact-badge">Outcome <small>fewer back-and-forths</small></span>
@@ -818,11 +878,6 @@
             <span class="tech-badge">LLM</span>
             <span class="tech-badge">Calendar API</span>
             <span class="tech-badge">Voice</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <div class="card-links">
-            <a href="./case-studies/ai-phone-assistant/index.html" class="link-case">View Case Study →</a>
           </div>
         </div>
       </div>
@@ -838,8 +893,8 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            Robust document ingestion for mixed-quality sources: scanned PDFs, images, and structured Word files.
-            Outputs stable JSON for downstream scoring, indexing, and dashboards.
+            A robust pipeline for ingesting mixed-quality documents: scanned PDFs, images, and Word files. 
+            Leverages Azure Document Intelligence to normalize text layout and extract metadata, feeding clean JSON into downstream search and scoring systems.
           </p>
           <div class="impact">
             <span class="impact-badge">Outcome <small>clean input layer</small></span>
@@ -855,7 +910,7 @@
         </div>
       </div>
 
-      <!-- 8) Power Automate Admin (New) -->
+      <!-- 8) Power Automate Admin -->
       <div class="card" data-category="automation"
            data-tags="power automate workflow approval m365 admin sharepoint logging">
         <div class="card-topline"></div>
@@ -866,8 +921,8 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            Automating routine administrative workflows: approval chains, notifications, and audit logging.
-            Reduces email clutter and ensures process adherence using M365 native tools.
+            Eliminating "email ping-pong" for routine approvals. 
+            This system utilizes Microsoft 365 native tools (Power Automate, Lists) to enforce process logic, track status in real-time, and create an immutable audit trail for management decisions.
           </p>
           <div class="impact">
             <span class="impact-badge">Outcome <small>time saving</small></span>
@@ -881,7 +936,7 @@
         </div>
       </div>
 
-      <!-- 9) Internal Task Assistants (New) -->
+      <!-- 9) Internal Task Assistants -->
       <div class="card" data-category="ai"
            data-tags="llm task assistant micro-tools internal productivity">
         <div class="card-topline"></div>
@@ -892,8 +947,8 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            Developing targeted AI assistants for specific internal tasks (e.g. Email Drafter, Contract Clause Checker)
-            rather than deploying a generic "ask me anything" bot.
+            Instead of a generic "ask me anything" bot, I build targeted micro-tools for specific workflows (e.g., "Draft Formal Letter", "Check Contract Clauses"). 
+            These tools have strict system prompts and context, delivering higher reliability for daily business tasks.
           </p>
           <div class="impact">
             <span class="impact-badge">Outcome <small>focus</small></span>
@@ -918,8 +973,8 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            Private LLM deployment for confidential legal/business data.
-            Focus: predictable latency, access control, and “no cloud” processing paths.
+            Deployment of open-weights models (like Llama 3) on local infrastructure to process highly confidential data. 
+            This ensures that sensitive legal or financial documents never leave the internal network while still benefiting from LLM capabilities.
           </p>
           <div class="impact">
             <span class="impact-badge">Outcome <small>data stays local</small></span>
@@ -946,8 +1001,8 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            A local-first RAG architecture designed for Hungarian documents (PDF/Word) with special handling for tables.
-            Focus: explainable retrieval and stable chunking strategies.
+            A retrieval-augmented generation (RAG) system optimized for complex Hungarian documents. 
+            It pays special attention to table structures and document hierarchy, ensuring that the LLM answers based on precise data chunks rather than hallucination.
           </p>
           <div class="impact">
             <span class="impact-badge">Outcome <small>better answers</small></span>
@@ -961,14 +1016,9 @@
             <span class="tech-badge">Embeddings</span>
           </div>
         </div>
-        <div class="card-footer">
-          <div class="card-links">
-            <a href="./case-studies/rag-stack/index.html" class="link-case">View Case Study →</a>
-          </div>
-        </div>
       </div>
 
-      <!-- 12) Whisper Meeting Notes (New) -->
+      <!-- 12) Whisper Meeting Notes -->
       <div class="card" data-category="ai"
            data-tags="whisper audio transcription meeting notes automation">
         <div class="card-topline"></div>
@@ -979,7 +1029,8 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            Processing internal voice notes and meetings into structured summaries and Jira tickets/action items using OpenAI Whisper.
+            An automated workflow that ingests voice notes and meeting recordings. 
+            Using OpenAI's Whisper for high-accuracy transcription (even in Hungarian), it then uses LLMs to extract key decisions and action items, pushing them directly into task management systems.
           </p>
           <div class="impact">
             <span class="impact-badge">Outcome <small>searchable audio</small></span>
@@ -993,40 +1044,7 @@
         </div>
       </div>
 
-       <!-- 13) BeatTheBot (Restored) -->
-      <div class="card" data-category="ai"
-           data-tags="beatthebot voice agent stress test prompt engineering move detector sandbox evaluation safety guardrails">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Applied AI</span>
-          <h3 class="card-title">BeatTheBot — Voice Agent Stress-Test Playground</h3>
-          <div class="card-sub">Prompt hardening under adversarial user behavior</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            A “game” that tries to trip up an AI phone agent. Designed for rapid iteration:
-            attack patterns → detection → calibrated response strategies.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>stronger prompts</small></span>
-            <span class="impact-badge">Method <small>red-team loops</small></span>
-            <span class="impact-badge">UX <small>business-like tone</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">LLM</span>
-            <span class="tech-badge">Prompt Engineering</span>
-            <span class="tech-badge">Evaluation</span>
-            <span class="tech-badge">Web</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <div class="card-links">
-            <a href="./case-studies/beatthebot/index.html" class="link-case">View Case Study →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 14) IFC → AR Visualization (Restored) -->
+      <!-- 14) IFC → AR Visualization -->
       <div class="card" data-category="engineering"
            data-tags="ifc blender usdz glb ar iphone webar construction visualization realtime 3d">
         <div class="card-topline"></div>
@@ -1037,8 +1055,8 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            Workflow for turning heavy IFC models into clean, small, client-friendly AR assets.
-            Focus: decimation, material cleanup, and “white massing” presentations.
+            A pipeline to convert heavy BIM (Industry Foundation Classes) models into lightweight AR assets usable on iPhones/iPads. 
+            Involves automated mesh decimation and material cleanup in Blender to allow on-site visualization of future structures.
           </p>
           <div class="impact">
             <span class="impact-badge">Outcome <small>faster demos</small></span>
@@ -1050,40 +1068,6 @@
             <span class="tech-badge">IFC</span>
             <span class="tech-badge">GLB/USDZ</span>
             <span class="tech-badge">AR</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 15) Algo Trading Toolkit (Restored) -->
-   <div class="card" data-category="engineering"
-           data-tags="forex algo trading backtesting mt5 mql5 python research risk management ftmo eurusd strategy metrics">
-        <div class="card-topline"></div>
-        <div class="card-header">
-          <span class="card-category"><span class="cat-dot"></span>Engineering</span>
-          <h3 class="card-title">Algo Trading Research Toolkit (MT5 + Python)</h3>
-          <div class="card-sub">Backtests, risk guards, and strategy iteration loops</div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            A research workflow for testing intraday FX strategies connecting MetaTrader 5 with Python. 
-            <strong>The developed strategy successfully passed the FTMO Challenge and is currently trading on a live $100,000 funded account.</strong>
-            Built for fast iteration, consistent risk metrics (Sharpe, Drawdown), and automated execution.
-          </p>
-          <div class="impact">
-            <span class="impact-badge">Outcome <small>FTMO Funded ($100k)</small></span>
-            <span class="impact-badge">Risk <small>guardrails</small></span>
-            <span class="impact-badge">Speed <small>variant runs</small></span>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">MT5</span>
-            <span class="tech-badge">MQL5</span>
-            <span class="tech-badge">Backtesting</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <div class="card-links">
-            <a href="./case-studies/trading-toolkit/index.html" class="link-case">View Case Study →</a>
           </div>
         </div>
       </div>
