@@ -2,9 +2,17 @@ BEGIN:VCARD
 VERSION:3.0
 FN:Darabos Csaba
 N:Darabos;Csaba;;;
-TEL;TYPE=CELL:+36300801624
-EMAIL:darabos.csaba@gmail.com
-URL:https://www.linkedin.com/in/darabos-csaba/
-URL:https://csab-ai.github.io/aisolutions.html
-NOTE:Systems Engineer - AI, Automation, Data Pipelines
+NICKNAME:Csaba;Darabos;DC
+ORG:AI Solutions
+TITLE:AI & Automation Engineer
+ROLE:AI Engineer;Process Automation;Systems Engineer
+TEL;TYPE=CELL,VOICE,PREF:+36300801624
+EMAIL;TYPE=INTERNET,PREF:darabos.csaba@gmail.com
+URL;TYPE=LinkedIn:https://www.linkedin.com/in/darabos-csaba/
+URL;TYPE=GitHub:https://github.com/csab-ai
+URL;TYPE=Portfolio:https://csab-ai.github.io/aisolutions.html
+CATEGORIES:AI,Automation,Folyamatautomatizálás,Hatékonyság,Python,Fejlesztő,Engineer,RAG,Voice Agent,Kreatív AI
+NOTE:Folyamatautomatizálás. Kreatív AI alkalmazások. AI hatékonyság növelés. Systems Engineer. RAG. Voice Agent. Process Automation. AI integration. Efficiency.
+X-SOCIALPROFILE;type=linkedin:https://www.linkedin.com/in/darabos-csaba/
+X-SOCIALPROFILE;type=github:https://github.com/csab-ai
 END:VCARD
