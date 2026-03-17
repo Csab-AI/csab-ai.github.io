@@ -299,7 +299,7 @@
 </section>
 
 <section class="wrap" style="padding-top:0;padding-bottom:24px">
-  <a class="vcard-cta" href="#" onclick="downloadVCard(event)">
+  <a class="vcard-cta" href="/darabos-csaba.vcf" download>
     <div class="vcard-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
         <rect x="2" y="5" width="20" height="14" rx="2"/>
@@ -523,8 +523,7 @@
   <div class="sec-hd"><span class="sec-label">Contact</span></div>
   <div class="contact-grid">
 
-  </div>
-</section>
+    <div class="contact-card">
       <h3>Collaboration & Consulting</h3>
       <p>Productizing internal tools, AI integration, process automation.</p>
       <div class="contact-rows">
@@ -535,7 +534,7 @@
           </div>
           <div class="row-content">
             <div class="row-label">Email</div>
-            <div class="row-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2541445744474a560b4656444744654248444c490b464a48">[email&#160;protected]</a></div>
+            <div class="row-value"><a href="mailto:darabos.csaba@gmail.com">darabos.csaba@gmail.com</a></div>
           </div>
           <div class="row-action">
             <button class="mini-btn" onclick="copyEmail()">
@@ -590,7 +589,7 @@
       <span class="foot-copy">© 2026 — Due to NDAs, source code for some projects is not public.</span>
       <div class="foot-links">
         <a href="https://linkedin.com/in/darabos-csaba/" target="_blank">LinkedIn</a>
-        <a href="/cdn-cgi/l/email-protection#9efaffecfffcf1edb0fdedfffcffdef9f3fff7f2b0fdf1f3">Email</a>
+        <a href="mailto:darabos.csaba@gmail.com">Email</a>
         <a href="tel:+36300801624">Phone</a>
       </div>
     </div>
@@ -612,32 +611,8 @@
   <div class="modal-body"><article class="cs" id="mContent"></article></div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* VCARD — inline blob, no server needed */
-function downloadVCard(e) {
-  e.preventDefault();
-  const vcf = [
-    'BEGIN:VCARD',
-    'VERSION:3.0',
-    'FN:Darabos Csaba',
-    'N:Darabos;Csaba;;;',
-    'ORG:Hunép Zrt',
-    'TITLE:Projektigazgató',
-    'TEL;TYPE=CELL:+36300801624',
-    'EMAIL:darabos.csaba@gmail.com',
-    'URL;TYPE=LinkedIn:https://www.linkedin.com/in/darabos-csaba/',
-    'URL;TYPE=GitHub:https://github.com/csab-ai',
-    'NOTE:Systems Engineer — AI\\, Automation\\, Data Pipelines.',
-    'END:VCARD'
-  ].join('\r\n');
-  const blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8' });
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href = url; a.download = 'darabos-csaba.vcf';
-  document.body.appendChild(a); a.click();
-  document.body.removeChild(a); URL.revokeObjectURL(url);
-}
 
+<script>
 /* COPY EMAIL */
 function copyEmail() {
   navigator.clipboard.writeText('darabos.csaba@gmail.com').then(() => {
