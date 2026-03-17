@@ -169,6 +169,7 @@
     /* CONTACT */
     .contact-grid { display:grid; gap:14px; }
     @media(min-width:768px){ .contact-grid { grid-template-columns:1fr 320px; align-items:start; gap:16px; } }
+    .contact-grid > a.vcard-cta { grid-column: 1 / -1; }
 
     .contact-card { background:var(--bg-card); border:1px solid var(--bd);
                     border-radius:var(--r-lg); padding:24px; }
@@ -502,6 +503,26 @@
   <div class="sec-hd"><span class="sec-label">Contact</span></div>
   <div class="contact-grid">
 
+    <!-- VCard CTA — TOP, full width -->
+    <a class="vcard-cta" href="#" onclick="downloadVCard(event)" style="grid-column:1/-1">
+      <div class="vcard-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="2" y="5" width="20" height="14" rx="2"/>
+          <circle cx="8.5" cy="11" r="2"/>
+          <path d="M14 9h4M14 13h3"/>
+          <path d="M4.5 18c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2"/>
+        </svg>
+      </div>
+      <div class="vcard-text">
+        <strong>Save contact to phone</strong>
+        <span>One tap — instantly in your contacts</span>
+      </div>
+      <span class="vcard-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Save contact
+      </span>
+    </a>
+
     <div class="contact-card">
       <h3>Collaboration & Consulting</h3>
       <p>Productizing internal tools, AI integration, process automation.</p>
@@ -559,26 +580,6 @@
       </div>
     </div>
 
-    <!-- VCard CTA -->
-    <a class="vcard-cta" href="#" onclick="downloadVCard(event)">
-      <div class="vcard-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-          <rect x="2" y="5" width="20" height="14" rx="2"/>
-          <circle cx="8.5" cy="11" r="2"/>
-          <path d="M14 9h4M14 13h3"/>
-          <path d="M4.5 18c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2"/>
-        </svg>
-      </div>
-      <div class="vcard-text">
-        <strong>Save contact to phone</strong>
-        <span>One tap — instantly in your contacts</span>
-      </div>
-      <span class="vcard-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Save contact
-      </span>
-    </a>
-
   </div>
 </section>
 
@@ -619,12 +620,13 @@ function downloadVCard(e) {
     'VERSION:3.0',
     'FN:Darabos Csaba',
     'N:Darabos;Csaba;;;',
-    'ORG:Systems Engineer & AI Automation',
-    'TITLE:AI & Automation Engineer',
+    'ORG:Hunép Zrt',
+    'TITLE:Projektigazgató',
     'TEL;TYPE=CELL:+36300801624',
     'EMAIL:darabos.csaba@gmail.com',
-    'URL:https://www.linkedin.com/in/darabos-csaba/',
-    'NOTE:Systems Engineer — AI\\, Automation\\, Data Pipelines. 25 years of management & process improvement.',
+    'URL;TYPE=LinkedIn:https://www.linkedin.com/in/darabos-csaba/',
+    'URL;TYPE=GitHub:https://github.com/csab-ai',
+    'NOTE:Systems Engineer — AI\\, Automation\\, Data Pipelines.',
     'END:VCARD'
   ].join('\r\n');
   const blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8' });
