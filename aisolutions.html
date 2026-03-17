@@ -3,291 +3,738 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | Engineering & Automation</title>
+  <title>Darabos Csaba | Systems Engineer & AI Automation</title>
   <meta name="description" content="Systems Engineer specializing in AI, Automation, and Data Structure." />
+  <meta name="theme-color" content="#0a0a0b" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root{--bg-body:#0a0a0b;--bg-card:#141416;--bg-card-hover:#1a1a1d;--bg-elevated:#1e1e21;--text-main:#f0f0f2;--text-muted:#8a8a8f;--text-dim:#5a5a5f;--primary:#3b82f6;--accent:#10b981;--accent-warm:#f59e0b;--border:#2a2a2e;--border-subtle:#1f1f23;--radius-lg:16px;--radius-md:10px;--radius-sm:6px;--font-sans:'DM Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace}
-    *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-    body{font-family:var(--font-sans);background:var(--bg-body);color:var(--text-main);line-height:1.6;-webkit-font-smoothing:antialiased}
-    body::before{content:'';position:fixed;top:0;left:0;right:0;height:600px;background:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(59,130,246,.08),transparent);pointer-events:none;z-index:0}
-    a{text-decoration:none;color:inherit;transition:color .2s}ul{list-style:none}button{font-family:var(--font-sans);cursor:pointer}
-    .container{max-width:1240px;margin:0 auto;padding:0 20px;position:relative;z-index:1}.section{padding:60px 0}
-    header{padding:20px 0;position:sticky;top:0;z-index:100;background:rgba(10,10,11,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle)}
-    .nav-wrapper{display:flex;justify-content:space-between;align-items:center}
-    .brand{font-family:var(--font-mono);font-size:.9rem;font-weight:600;display:inline-flex;align-items:center;gap:12px}
-    .brand-dot{width:8px;height:8px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-    .hamburger{display:flex;flex-direction:column;gap:5px;width:24px;background:none;border:none;padding:0;z-index:110}
-    .hamburger span{height:2px;background:var(--text-main);border-radius:2px;transition:all .3s}
-    .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.hamburger.active span:nth-child(2){opacity:0}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-    .nav-links{display:none;position:fixed;inset:0;background:var(--bg-body);flex-direction:column;justify-content:center;align-items:center;gap:32px;z-index:105}
-    .nav-links.active{display:flex}.nav-links a{font-weight:600;color:var(--text-muted);font-size:1.2rem}.nav-links a:hover{color:var(--text-main)}
-    @media(min-width:768px){.hamburger{display:none}.nav-links{display:flex;position:static;flex-direction:row;gap:32px;background:transparent}.nav-links a{font-size:.9rem}}
-    .hero{padding:100px 0 60px;max-width:800px}
-    .hero-eyebrow{font-family:var(--font-mono);font-size:.8rem;color:var(--primary);margin-bottom:16px;letter-spacing:.05em}
-    .hero h1{font-size:clamp(2.2rem,6vw,3.5rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:20px}.hero h1 span{color:var(--text-muted)}
-    .hero-description{font-size:1.1rem;color:var(--text-muted);max-width:600px;margin-bottom:32px}
-    .hero-tags{display:flex;flex-wrap:wrap;gap:8px}
-    .tag{font-family:var(--font-mono);font-size:.75rem;padding:6px 12px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-muted)}
-    .section-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:32px;flex-wrap:wrap;gap:16px}
-    .section-title{font-family:var(--font-mono);font-size:.8rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em}
-    .filter-container{display:flex;gap:8px;flex-wrap:wrap}
-    .filter-btn{font-family:var(--font-mono);font-size:.75rem;padding:8px 14px;background:transparent;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-muted);transition:all .2s}
-    .filter-btn:hover{border-color:var(--text-dim);color:var(--text-main)}
-    .filter-btn.active{background:var(--text-main);color:var(--bg-body);border-color:var(--text-main)}
-    .filter-count{opacity:.6;margin-left:6px}
-    .grid{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
-    @media(min-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
-    .card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;transition:all .3s;position:relative;overflow:hidden}
-    .card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent);opacity:0;transition:opacity .3s}
-    .card:hover{background:var(--bg-card-hover);transform:translateY(-2px)}.card:hover::before{opacity:1}
-    .card-category{font-family:var(--font-mono);font-size:.7rem;color:var(--primary);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
-    .card-title{font-size:1.1rem;font-weight:700;margin-bottom:8px;line-height:1.3}
-    .card-sub{font-family:var(--font-mono);font-size:.8rem;color:var(--text-dim);margin-bottom:16px}
-    .card-text{font-size:.9rem;color:var(--text-muted);flex-grow:1;margin-bottom:20px}
-    .tech-stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
-    .tech-badge{font-family:var(--font-mono);font-size:.68rem;padding:4px 8px;background:var(--bg-elevated);border-radius:var(--radius-sm);color:var(--text-dim)}
-    .card-footer{display:flex;gap:12px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--border-subtle)}
-    .card-link{font-family:var(--font-mono);font-size:.8rem;color:var(--text-muted);display:inline-flex;align-items:center;gap:6px;transition:color .2s}
-    .card-link:hover{color:var(--primary)}.card-link svg{width:14px;height:14px}
-    .case-study-btn{font-family:var(--font-mono);font-size:.8rem;color:var(--accent);background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);padding:6px 12px;border-radius:var(--radius-sm);display:inline-flex;align-items:center;gap:6px;transition:all .2s}
-    .case-study-btn:hover{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3)}
-    .philosophy-content{max-width:700px}.philosophy-content>p{font-size:1.1rem;color:var(--text-muted);margin-bottom:20px}.philosophy-content strong{color:var(--text-main)}
-    .principles{display:grid;gap:16px;margin-top:40px}@media(min-width:640px){.principles{grid-template-columns:repeat(3,1fr)}}
-    .principle{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px}
-    .principle-number{font-family:var(--font-mono);font-size:.75rem;color:var(--primary);margin-bottom:12px}
-    .principle h3{font-size:1rem;margin-bottom:8px}.principle p{font-size:.9rem;color:var(--text-muted)}
-    .contact-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
-    .contact-info h3{font-size:1.2rem;margin-bottom:8px}.contact-info p{color:var(--text-muted);font-size:.95rem}
-    .contact-email{font-family:var(--font-mono);font-size:.9rem;color:var(--text-main);margin-top:12px;display:flex;align-items:center;gap:12px}
-    .copy-btn{font-size:.75rem;padding:4px 10px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-muted);transition:all .2s}
-    .copy-btn:hover{border-color:var(--text-dim);color:var(--text-main)}
-    .contact-links{display:flex;gap:16px}
-    .contact-link{font-family:var(--font-mono);font-size:.85rem;color:var(--text-muted);padding:10px 20px;border:1px solid var(--border);border-radius:var(--radius-sm);transition:all .2s}
-    .contact-link:hover{border-color:var(--primary);color:var(--primary)}
-    footer{padding:40px 0;border-top:1px solid var(--border-subtle);margin-top:60px}
-    .footer-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-    .footer-text{font-size:.8rem;color:var(--text-dim)}.footer-links{display:flex;gap:24px}.footer-links a{font-size:.8rem;color:var(--text-muted)}.footer-links a:hover{color:var(--text-main)}
-    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);z-index:1000;opacity:0;visibility:hidden;transition:all .3s}
-    .modal-overlay.active{opacity:1;visibility:visible}
-    .modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);width:90%;max-width:720px;max-height:85vh;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);z-index:1001;opacity:0;visibility:hidden;transition:all .3s;overflow:hidden;display:flex;flex-direction:column}
-    .modal.active{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
-    .modal-header{padding:24px 28px;border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
-    .modal-meta{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-    .modal-badge{font-family:var(--font-mono);font-size:.7rem;padding:4px 10px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);border-radius:var(--radius-sm);color:var(--accent);text-transform:uppercase;letter-spacing:.05em}
-    .modal-title{font-size:1.4rem;font-weight:700;line-height:1.3}
-    .modal-subtitle{font-size:.95rem;color:var(--text-muted);margin-top:6px}
-    .modal-close{width:36px;height:36px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-muted);display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
-    .modal-close:hover{background:var(--bg-card-hover);color:var(--text-main)}
-    .modal-body{padding:28px;overflow-y:auto;flex:1}
-    .case-study{font-size:.95rem;line-height:1.75}
-    .case-study h2{font-size:1.15rem;font-weight:700;margin:32px 0 16px;padding-top:24px;border-top:1px solid var(--border-subtle)}
-    .case-study h2:first-child{margin-top:0;padding-top:0;border-top:none}
-    .case-study p{color:var(--text-muted);margin-bottom:16px}.case-study strong{color:var(--text-main);font-weight:600}
-    .case-study ul{margin:16px 0;padding-left:20px}
-    .case-study li{color:var(--text-muted);margin-bottom:8px;position:relative;list-style:none}
-    .case-study li::before{content:'→';position:absolute;left:-20px;color:var(--primary);font-family:var(--font-mono)}
-    .case-study blockquote{margin:24px 0;padding:20px 24px;background:var(--bg-elevated);border-left:3px solid var(--primary);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
-    .case-study blockquote p{margin:0;font-style:italic}
-    .case-study-footer{margin-top:32px;padding-top:24px;border-top:1px solid var(--border-subtle);font-family:var(--font-mono);font-size:.8rem;color:var(--text-dim);font-style:italic}
+    :root {
+      --bg:#0a0a0b; --bg-card:#111113; --bg-card-h:#171719; --bg-el:#1c1c1f;
+      --c-main:#f0f0f2; --c-muted:#8a8a8f; --c-dim:#55555a;
+      --blue:#3b82f6; --green:#10b981; --amber:#f59e0b;
+      --bd:#252528; --bd-sub:#1a1a1d;
+      --r-lg:18px; --r-md:12px; --r-sm:8px;
+      --sans:'DM Sans',system-ui,sans-serif;
+      --mono:'JetBrains Mono',monospace;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+    body { font-family:var(--sans); background:var(--bg); color:var(--c-main);
+           line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    a { text-decoration:none; color:inherit; }
+    ul { list-style:none; }
+    button { font-family:var(--sans); cursor:pointer; border:none; background:none; }
+
+    body::before {
+      content:''; position:fixed; top:0; left:0; right:0; height:50vh;
+      background:radial-gradient(ellipse 90% 60% at 50% -10%, rgba(59,130,246,.07), transparent);
+      pointer-events:none; z-index:0;
+    }
+
+    .wrap { max-width:1240px; margin:0 auto; padding:0 16px; position:relative; z-index:1; }
+    @media(min-width:640px){ .wrap { padding:0 24px; } }
+    @media(min-width:1024px){ .wrap { padding:0 40px; } }
+    .section { padding:56px 0; }
+    @media(min-width:768px){ .section { padding:80px 0; } }
+
+    /* HEADER */
+    header { position:sticky; top:0; z-index:200;
+             background:rgba(10,10,11,.88); backdrop-filter:blur(20px) saturate(180%);
+             border-bottom:1px solid var(--bd-sub); }
+    .nav { display:flex; justify-content:space-between; align-items:center;
+           height:56px; padding:0 16px; max-width:1240px; margin:0 auto; }
+    @media(min-width:640px){ .nav { padding:0 24px; height:64px; } }
+    @media(min-width:1024px){ .nav { padding:0 40px; } }
+
+    .brand { font-family:var(--mono); font-size:.85rem; font-weight:600;
+             display:inline-flex; align-items:center; gap:10px; }
+    .brand-dot { width:7px; height:7px; background:var(--green);
+                 border-radius:50%; animation:blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+    .ham { display:flex; flex-direction:column; gap:5px; width:22px; padding:4px 0; }
+    .ham span { height:2px; background:var(--c-main); border-radius:2px;
+                transition:all .3s cubic-bezier(.4,0,.2,1); }
+    .ham.open span:nth-child(1){ transform:rotate(45deg) translate(5px,5px); }
+    .ham.open span:nth-child(2){ opacity:0; transform:scaleX(0); }
+    .ham.open span:nth-child(3){ transform:rotate(-45deg) translate(5px,-5px); }
+
+    .nav-drawer { display:none; position:fixed; inset:0; background:var(--bg);
+                  flex-direction:column; justify-content:center; align-items:center;
+                  gap:36px; z-index:205; }
+    .nav-drawer.open { display:flex; }
+    .nav-drawer a { font-size:1.5rem; font-weight:700; color:var(--c-muted); transition:color .2s; }
+    .nav-drawer a:hover { color:var(--c-main); }
+    @media(min-width:768px){
+      .ham { display:none; }
+      .nav-drawer { display:flex; position:static; flex-direction:row;
+                    gap:28px; background:none; }
+      .nav-drawer a { font-size:.875rem; font-weight:500; }
+    }
+
+    /* HERO */
+    .hero { padding:72px 0 48px; }
+    @media(min-width:768px){ .hero { padding:110px 0 64px; } }
+    .hero-eyebrow { font-family:var(--mono); font-size:.75rem; color:var(--blue);
+                    letter-spacing:.08em; margin-bottom:14px; }
+    .hero h1 { font-size:clamp(2rem,8vw,3.8rem); font-weight:800;
+               line-height:1.08; letter-spacing:-.035em; margin-bottom:18px; max-width:700px; }
+    .hero h1 em { font-style:normal; color:var(--c-muted); }
+    .hero-desc { font-size:clamp(.95rem,2.5vw,1.1rem); color:var(--c-muted);
+                 max-width:560px; margin-bottom:28px; }
+    .tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { font-family:var(--mono); font-size:.72rem; padding:5px 11px;
+           background:var(--bg-card); border:1px solid var(--bd);
+           border-radius:var(--r-sm); color:var(--c-muted); }
+
+    /* SECTION HEADER */
+    .sec-hd { display:flex; justify-content:space-between; align-items:baseline;
+              margin-bottom:24px; flex-wrap:wrap; gap:12px; }
+    .sec-label { font-family:var(--mono); font-size:.72rem; color:var(--c-dim);
+                 text-transform:uppercase; letter-spacing:.12em; }
+    .filters { display:flex; gap:6px; flex-wrap:wrap; }
+    .f-btn { font-family:var(--mono); font-size:.72rem; padding:7px 13px;
+             background:transparent; border:1px solid var(--bd);
+             border-radius:var(--r-sm); color:var(--c-muted); transition:all .2s; }
+    .f-btn:hover { border-color:var(--c-dim); color:var(--c-main); }
+    .f-btn.on { background:var(--c-main); color:var(--bg); border-color:var(--c-main); }
+    .f-cnt { opacity:.55; margin-left:5px; }
+
+    /* GRID */
+    .grid { display:grid; grid-template-columns:1fr; gap:14px; }
+    @media(min-width:600px){ .grid { grid-template-columns:repeat(2,1fr); } }
+    @media(min-width:1024px){ .grid { grid-template-columns:repeat(3,1fr); } }
+
+    /* CARD */
+    .card { background:var(--bg-card); border:1px solid var(--bd);
+            border-radius:var(--r-lg); padding:20px; display:flex; flex-direction:column;
+            transition:transform .25s, background .25s, border-color .25s;
+            position:relative; overflow:hidden; -webkit-tap-highlight-color:transparent; }
+    .card::after { content:''; position:absolute; inset:0; top:auto; height:1px;
+                   background:linear-gradient(90deg,transparent,var(--blue),transparent);
+                   opacity:0; transition:opacity .3s; }
+    @media(hover:hover){
+      .card:hover { background:var(--bg-card-h); transform:translateY(-2px); }
+      .card:hover::after { opacity:1; }
+    }
+    .card.feat { border-color:rgba(245,158,11,.22);
+                 background:linear-gradient(140deg,#111113 0%,#141210 100%); }
+    .card.feat::after { background:linear-gradient(90deg,transparent,var(--amber),transparent); }
+    @media(hover:hover){ .card.feat:hover { border-color:rgba(245,158,11,.4); } }
+
+    .feat-badge { display:inline-flex; align-items:center; gap:5px; font-family:var(--mono);
+                  font-size:.65rem; padding:3px 9px; background:rgba(245,158,11,.1);
+                  border:1px solid rgba(245,158,11,.22); border-radius:var(--r-sm);
+                  color:var(--amber); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; }
+    .feat-badge svg { width:9px; height:9px; }
+    .card-cat { font-family:var(--mono); font-size:.68rem; color:var(--blue);
+                text-transform:uppercase; letter-spacing:.07em; margin-bottom:10px; }
+    .card.feat .card-cat { color:var(--amber); }
+    .card-title { font-size:1.05rem; font-weight:700; margin-bottom:6px; line-height:1.3; }
+    .card-sub { font-family:var(--mono); font-size:.75rem; color:var(--c-dim); margin-bottom:14px; }
+    .card-body { font-size:.875rem; color:var(--c-muted); flex-grow:1; margin-bottom:18px; }
+    .stack { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:14px; }
+    .badge { font-family:var(--mono); font-size:.65rem; padding:3px 7px;
+             background:var(--bg-el); border-radius:6px; color:var(--c-dim); }
+    .card-ft { display:flex; gap:10px; flex-wrap:wrap; padding-top:14px;
+               border-top:1px solid var(--bd-sub); align-items:center; }
+    .c-link { font-family:var(--mono); font-size:.78rem; color:var(--c-muted);
+              display:inline-flex; align-items:center; gap:5px; transition:color .2s; }
+    .c-link:hover { color:var(--blue); }
+    .c-link svg { width:13px; height:13px; flex-shrink:0; }
+    .cs-btn { font-family:var(--mono); font-size:.78rem; color:var(--green);
+              background:rgba(16,185,129,.08); border:1px solid rgba(16,185,129,.18);
+              padding:5px 11px; border-radius:var(--r-sm);
+              display:inline-flex; align-items:center; gap:5px; transition:all .2s; }
+    .cs-btn:hover { background:rgba(16,185,129,.14); }
+    .int-badge { font-family:var(--mono); font-size:.68rem; padding:4px 9px;
+                 background:rgba(85,85,90,.1); border:1px solid rgba(85,85,90,.2);
+                 border-radius:var(--r-sm); color:var(--c-dim);
+                 display:inline-flex; align-items:center; gap:5px; }
+
+    /* APPROACH */
+    .approach-text { max-width:680px; }
+    .approach-text p { font-size:clamp(1rem,2.5vw,1.1rem); color:var(--c-muted); margin-bottom:18px; }
+    .approach-text strong { color:var(--c-main); }
+    .principles { display:grid; gap:14px; margin-top:36px; }
+    @media(min-width:600px){ .principles { grid-template-columns:repeat(3,1fr); } }
+    .principle { background:var(--bg-card); border:1px solid var(--bd);
+                 border-radius:var(--r-md); padding:20px; }
+    .prin-num { font-family:var(--mono); font-size:.72rem; color:var(--blue); margin-bottom:10px; }
+    .principle h3 { font-size:.95rem; font-weight:700; margin-bottom:6px; }
+    .principle p { font-size:.875rem; color:var(--c-muted); }
+
+    /* CONTACT */
+    .contact-grid { display:grid; gap:14px; }
+    @media(min-width:768px){ .contact-grid { grid-template-columns:1fr 320px; align-items:start; gap:16px; } }
+
+    .contact-card { background:var(--bg-card); border:1px solid var(--bd);
+                    border-radius:var(--r-lg); padding:24px; }
+    .contact-card h3 { font-size:1.1rem; font-weight:700; margin-bottom:6px; }
+    .contact-card > p { color:var(--c-muted); font-size:.9rem; margin-bottom:20px; }
+
+    .contact-rows { display:flex; flex-direction:column; gap:10px; }
+    .contact-row { display:flex; align-items:center; gap:12px; padding:12px 14px;
+                   background:var(--bg-el); border:1px solid var(--bd); border-radius:var(--r-md);
+                   transition:border-color .2s; }
+    a.contact-row:hover { border-color:var(--blue); }
+    .row-icon { width:34px; height:34px; border-radius:9px; display:flex;
+                align-items:center; justify-content:center; flex-shrink:0; }
+    .row-icon.blue  { background:rgba(59,130,246,.12); color:var(--blue); }
+    .row-icon.green { background:rgba(16,185,129,.12); color:var(--green); }
+    .row-icon svg { width:16px; height:16px; }
+    .row-content { flex:1; min-width:0; }
+    .row-label { font-family:var(--mono); font-size:.62rem; color:var(--c-dim);
+                 text-transform:uppercase; letter-spacing:.07em; margin-bottom:2px; }
+    .row-value { font-family:var(--mono); font-size:.82rem; color:var(--c-main);
+                 white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .row-action { flex-shrink:0; display:flex; align-items:center; gap:6px; }
+    .mini-btn { font-family:var(--mono); font-size:.7rem; padding:5px 10px;
+                background:var(--bg-card); border:1px solid var(--bd);
+                border-radius:6px; color:var(--c-muted); transition:all .2s;
+                display:inline-flex; align-items:center; gap:4px; }
+    .mini-btn:hover { border-color:var(--blue); color:var(--blue); }
+    .mini-btn svg { width:11px; height:11px; }
+    .copied-flash { font-size:.7rem; color:var(--green); opacity:0; transition:opacity .3s; }
+
+    /* VCARD */
+    .vcard-cta { display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+                 background:linear-gradient(135deg, rgba(16,185,129,.07) 0%, rgba(59,130,246,.05) 100%);
+                 border:1px solid rgba(16,185,129,.2); border-radius:var(--r-lg);
+                 padding:20px 22px; cursor:pointer; transition:border-color .2s; }
+    .vcard-cta:hover { border-color:rgba(16,185,129,.42); }
+    .vcard-icon { width:46px; height:46px; border-radius:12px; flex-shrink:0;
+                  background:rgba(16,185,129,.1); border:1px solid rgba(16,185,129,.18);
+                  display:flex; align-items:center; justify-content:center; }
+    .vcard-icon svg { width:22px; height:22px; color:var(--green); }
+    .vcard-text { flex:1; min-width:140px; }
+    .vcard-text strong { display:block; font-size:.95rem; margin-bottom:3px; }
+    .vcard-text span { font-size:.82rem; color:var(--c-muted); }
+    .vcard-btn { font-family:var(--mono); font-size:.78rem; font-weight:600;
+                 padding:10px 18px; background:var(--green); color:#000;
+                 border-radius:var(--r-sm); display:inline-flex; align-items:center;
+                 gap:6px; transition:opacity .2s; white-space:nowrap; flex-shrink:0; }
+    .vcard-btn:hover { opacity:.85; }
+    .vcard-btn svg { width:14px; height:14px; }
+
+    /* FOOTER */
+    footer { padding:32px 0 40px; border-top:1px solid var(--bd-sub); margin-top:48px; }
+    .foot { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+    .foot-copy { font-size:.75rem; color:var(--c-dim); }
+    .foot-links { display:flex; gap:20px; }
+    .foot-links a { font-size:.78rem; color:var(--c-muted); transition:color .2s; }
+    .foot-links a:hover { color:var(--c-main); }
+
+    /* MODAL */
+    .overlay { position:fixed; inset:0; background:rgba(0,0,0,.88); backdrop-filter:blur(10px);
+               z-index:500; opacity:0; visibility:hidden; transition:all .3s; }
+    .overlay.on { opacity:1; visibility:visible; }
+    .modal { position:fixed; top:50%; left:50%;
+             transform:translate(-50%,-52%) scale(.96);
+             width:calc(100% - 32px); max-width:700px; max-height:88vh;
+             background:var(--bg-card); border:1px solid var(--bd); border-radius:var(--r-lg);
+             z-index:510; opacity:0; visibility:hidden; transition:all .3s;
+             overflow:hidden; display:flex; flex-direction:column; }
+    .modal.on { opacity:1; visibility:visible; transform:translate(-50%,-50%) scale(1); }
+    .modal-hd { padding:20px 22px; border-bottom:1px solid var(--bd-sub);
+                display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+    .modal-pill { font-family:var(--mono); font-size:.65rem; padding:3px 9px;
+                  background:rgba(16,185,129,.1); border:1px solid rgba(16,185,129,.2);
+                  border-radius:var(--r-sm); color:var(--green);
+                  text-transform:uppercase; letter-spacing:.05em; margin-bottom:8px; display:inline-block; }
+    .modal-title { font-size:1.25rem; font-weight:700; line-height:1.3; }
+    .modal-sub { font-size:.9rem; color:var(--c-muted); margin-top:5px; }
+    .modal-close { width:34px; height:34px; background:var(--bg-el); border:1px solid var(--bd);
+                   border-radius:var(--r-sm); color:var(--c-muted);
+                   display:flex; align-items:center; justify-content:center;
+                   transition:all .2s; flex-shrink:0; }
+    .modal-close:hover { color:var(--c-main); }
+    .modal-body { padding:24px; overflow-y:auto; flex:1; -webkit-overflow-scrolling:touch; }
+    .cs { font-size:.9rem; line-height:1.8; }
+    .cs h2 { font-size:1.05rem; font-weight:700; margin:28px 0 12px;
+             padding-top:20px; border-top:1px solid var(--bd-sub); }
+    .cs h2:first-child { margin-top:0; padding-top:0; border-top:none; }
+    .cs p { color:var(--c-muted); margin-bottom:14px; }
+    .cs strong { color:var(--c-main); }
+    .cs ul { margin:14px 0; padding-left:18px; }
+    .cs li { color:var(--c-muted); margin-bottom:7px; list-style:none; position:relative; }
+    .cs li::before { content:'→'; position:absolute; left:-18px; color:var(--blue); font-family:var(--mono); }
+    .cs blockquote { margin:20px 0; padding:16px 20px; background:var(--bg-el);
+                     border-left:3px solid var(--blue); border-radius:0 var(--r-sm) var(--r-sm) 0; }
+    .cs blockquote p { margin:0; font-style:italic; }
+    .cs-note { margin-top:28px; padding-top:20px; border-top:1px solid var(--bd-sub);
+               font-family:var(--mono); font-size:.75rem; color:var(--c-dim); font-style:italic; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav-wrapper">
-      <a href="#" class="brand"><span class="brand-dot"></span>darabos.csaba</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-      <nav class="nav-links" id="nav-links">
-        <a href="#projects" onclick="closeMenu()">Work</a>
-        <a href="#philosophy" onclick="closeMenu()">Approach</a>
-        <a href="#contact" onclick="closeMenu()">Contact</a>
-      </nav>
-    </div>
-  </header>
 
-  <section class="hero container">
-    <div class="hero-eyebrow">// Systems Engineer</div>
-    <h1>Structure before<br><span>Automation.</span></h1>
-    <p class="hero-description">I build systems that transform unstructured chaos into executable logic. Engineering-first AI, compliance-grade pipelines, and pragmatic automation for real-world operations.</p>
-    <div class="hero-tags">
-      <span class="tag">Python</span><span class="tag">Applied AI</span><span class="tag">RAG Systems</span><span class="tag">Compliance</span><span class="tag">Voice Agents</span><span class="tag">Process Automation</span>
+<header>
+  <nav class="nav">
+    <a href="#" class="brand"><span class="brand-dot"></span>darabos.csaba</a>
+    <button class="ham" id="ham" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-drawer" id="drawer" role="navigation">
+      <a href="#projects" onclick="closeNav()">Work</a>
+      <a href="#philosophy" onclick="closeNav()">Approach</a>
+      <a href="#contact" onclick="closeNav()">Contact</a>
     </div>
-  </section>
+  </nav>
+</header>
 
-  <section class="section container" id="projects">
-    <div class="section-header">
-      <span class="section-title">Projects</span>
-      <div class="filter-container">
-        <button class="filter-btn active" data-category="all">All<span class="filter-count" id="countAll"></span></button>
-        <button class="filter-btn" data-category="ai">AI<span class="filter-count" id="countAI"></span></button>
-        <button class="filter-btn" data-category="compliance">Compliance<span class="filter-count" id="countCompliance"></span></button>
-        <button class="filter-btn" data-category="automation">Automation<span class="filter-count" id="countAutomation"></span></button>
-        <button class="filter-btn" data-category="engineering">Engineering<span class="filter-count" id="countEngineering"></span></button>
-      </div>
-    </div>
-    <div class="grid" id="grid">
-      <div class="card" data-category="ai">
-        <div class="card-category">Applied AI</div>
-        <h3 class="card-title">BeatTheBot — Voice Agent Stress-Test</h3>
-        <div class="card-sub">Prompt hardening under adversarial behavior</div>
-        <p class="card-text">An interactive "game" designed to stress-test AI voice agents. Users try to break the bot, revealing weaknesses in prompt engineering through gamified red-teaming.</p>
-        <div class="tech-stack"><span class="tech-badge">LLM</span><span class="tech-badge">Prompt Engineering</span><span class="tech-badge">Evaluation</span><span class="tech-badge">Web</span></div>
-        <div class="card-footer">
-          <a href="https://beatthe.bot" target="_blank" class="card-link">Play Game<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
-          <button class="case-study-btn" onclick="openModal('beatthebot')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>Case Study</button>
-        </div>
-      </div>
-      <div class="card" data-category="ai">
-        <div class="card-category">Applied AI</div>
-        <h3 class="card-title">Observio — Official Gazette Monitoring</h3>
-        <div class="card-sub">Hungarian Gazette → OCR/AI scoring → alerts</div>
-        <p class="card-text">Automated monitoring of "Magyar Közlöny" and regulatory feeds. Semantic scoring filters thousands of pages for business relevance, delivering personalized email digests.</p>
-        <div class="tech-stack"><span class="tech-badge">Python</span><span class="tech-badge">OCR</span><span class="tech-badge">Azure AI</span><span class="tech-badge">SES</span></div>
-        <div class="card-footer"><a href="https://observio.app" target="_blank" class="card-link">Visit Site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></div>
-      </div>
-      <div class="card" data-category="compliance">
-        <div class="card-category">Data & Compliance</div>
-        <h3 class="card-title">Fishing Catch & Registry System</h3>
-        <div class="card-sub">Executable regulations → deterministic validation</div>
-        <p class="card-text">A unified domain model treating complex regulations (closed seasons, size limits, daily quotas) as executable code rules with automatic validation against government data.</p>
-        <div class="tech-stack"><span class="tech-badge">Python</span><span class="tech-badge">DDD</span><span class="tech-badge">Web Scraping</span><span class="tech-badge">NLP</span></div>
-        <div class="card-footer"><a href="https://horgaszfogas.com" target="_blank" class="card-link">Visit Site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></div>
-      </div>
-      <div class="card" data-category="engineering">
-        <div class="card-category">Engineering</div>
-        <h3 class="card-title">Algo Trading Research Toolkit</h3>
-        <div class="card-sub">Backtests, risk guards, strategy iteration</div>
-        <p class="card-text">Research workflow for FX strategies with MT5 + Python integration. <strong>Strategy passed FTMO Challenge and is trading on a live $100k funded account.</strong></p>
-        <div class="tech-stack"><span class="tech-badge">Python</span><span class="tech-badge">MT5</span><span class="tech-badge">MQL5</span><span class="tech-badge">Backtesting</span></div>
-      </div>
-      <div class="card" data-category="ai">
-        <div class="card-category">Applied AI</div>
-        <h3 class="card-title">Open-Source RAG Stack</h3>
-        <div class="card-sub">Docs + tables → structure-aware retrieval</div>
-        <p class="card-text">RAG system optimized for complex Hungarian documents. Special attention to table structures and document hierarchy for precise, hallucination-resistant answers.</p>
-        <div class="tech-stack"><span class="tech-badge">Qdrant</span><span class="tech-badge">LlamaIndex</span><span class="tech-badge">Python</span><span class="tech-badge">Embeddings</span></div>
-      </div>
-      <div class="card" data-category="ai">
-        <div class="card-category">Applied AI</div>
-        <h3 class="card-title">Secure Local AI (On-Prem LLM)</h3>
-        <div class="card-sub">Sensitive docs → local inference</div>
-        <p class="card-text">Deployment of open-weights models (Llama 3) on local infrastructure for confidential data processing. Documents never leave the internal network.</p>
-        <div class="tech-stack"><span class="tech-badge">Ollama</span><span class="tech-badge">Llama 3</span><span class="tech-badge">Linux</span><span class="tech-badge">Infra</span></div>
-      </div>
-      <div class="card" data-category="ai">
-        <div class="card-category">Applied AI</div>
-        <h3 class="card-title">AI Phone Assistant (Scheduling)</h3>
-        <div class="card-sub">Natural language → calendar event</div>
-        <p class="card-text">Voice agent handling Hungarian scheduling nuances ("next Tuesday afternoon"). Real-time calendar checks and automatic appointment creation.</p>
-        <div class="tech-stack"><span class="tech-badge">Vapi.ai</span><span class="tech-badge">LLM</span><span class="tech-badge">Calendar API</span><span class="tech-badge">Voice</span></div>
-      </div>
-      <div class="card" data-category="engineering">
-        <div class="card-category">Engineering</div>
-        <h3 class="card-title">Blueprint Revision Comparator</h3>
-        <div class="card-sub">PDF drawings → change heatmap</div>
-        <p class="card-text">Solves the classic construction problem: "What changed in this revision?" Pixel-level comparison with OpenCV, generating visual change heatmaps.</p>
-        <div class="tech-stack"><span class="tech-badge">Python</span><span class="tech-badge">OpenCV</span><span class="tech-badge">PyMuPDF</span></div>
-      </div>
-      <div class="card" data-category="automation">
-        <div class="card-category">Automation</div>
-        <h3 class="card-title">Document Ingestion Pipeline</h3>
-        <div class="card-sub">Mixed PDFs → normalized JSON</div>
-        <p class="card-text">Robust pipeline for mixed-quality documents: scanned PDFs, images, Word files. Azure Document Intelligence for normalization and metadata extraction.</p>
-        <div class="tech-stack"><span class="tech-badge">Azure DI</span><span class="tech-badge">Python</span><span class="tech-badge">OCR</span><span class="tech-badge">JSON Schema</span></div>
-      </div>
-      <div class="card" data-category="automation">
-        <div class="card-category">Automation</div>
-        <h3 class="card-title">Construction Log Analytics</h3>
-        <div class="card-sub">Daily reports → structured KPIs</div>
-        <p class="card-text">Turns unstructured daily site logs into structured data. Tracks completion percentages, aggregates weather delays, archives evidence for billing and disputes.</p>
-        <div class="tech-stack"><span class="tech-badge">Power Automate</span><span class="tech-badge">SharePoint</span><span class="tech-badge">Data Modeling</span></div>
-      </div>
-      <div class="card" data-category="compliance">
-        <div class="card-category">Data & Compliance</div>
-        <h3 class="card-title">Regulatory Impact Filter</h3>
-        <div class="card-sub">Legislation → relevance scoring</div>
-        <p class="card-text">Corporate tool answering "Does this affect us?" Uses entity recognition and custom classifiers to flag legislation impacting specific operational domains.</p>
-        <div class="tech-stack"><span class="tech-badge">Python</span><span class="tech-badge">NLP</span><span class="tech-badge">Scraping</span></div>
-      </div>
-      <div class="card" data-category="ai">
-        <div class="card-category">Applied AI</div>
-        <h3 class="card-title">Automated Meeting Intelligence</h3>
-        <div class="card-sub">Audio → Text → Action Items</div>
-        <p class="card-text">Automated workflow for voice notes and meeting recordings. Whisper transcription (with Hungarian support), LLM-based action item extraction.</p>
-        <div class="tech-stack"><span class="tech-badge">Whisper</span><span class="tech-badge">Python</span><span class="tech-badge">LLM</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section container" id="philosophy">
-    <div class="section-header"><span class="section-title">Approach</span></div>
-    <div class="philosophy-content">
-      <p><strong>AI tools alone are just raw potential.</strong> Without context, they solve nothing. The real value lies in deep process knowledge: identifying the exact pain points where automation translates into reclaimed time and measurable economic gain.</p>
-      <p>I combine AI technologies creatively and boldly — not just as a developer, but with the perspective of <strong>25 years in management and process improvement.</strong> My focus is always on ROI: not "what can AI do?" but "how does this generate profit?"</p>
-    </div>
-    <div class="principles">
-      <div class="principle"><div class="principle-number">01</div><h3>Process First</h3><p>Understanding business logic and pain points before writing a single line of code.</p></div>
-      <div class="principle"><div class="principle-number">02</div><h3>Economic Value</h3><p>Focusing on time savings and efficiency. If it doesn't pay off, it's just a toy.</p></div>
-      <div class="principle"><div class="principle-number">03</div><h3>Experience</h3><p>Leveraging 25 years of cross-industry problem-solving to deploy AI where it actually works.</p></div>
-    </div>
-  </section>
-
-  <section class="section container" id="contact">
-    <div class="section-header"><span class="section-title">Contact</span></div>
-    <div class="contact-card">
-      <div class="contact-info">
-        <h3>Collaboration & Consulting</h3>
-        <p>Productizing internal tools, AI integration, process automation.</p>
-        <div class="contact-email">darabos.csaba@gmail.com<button class="copy-btn" onclick="copyEmail()">Copy</button><span id="copy-feedback" style="font-size:.75rem;color:var(--accent);opacity:0;transition:opacity .3s">Copied!</span></div>
-      </div>
-      <div class="contact-links">
-        <a href="mailto:darabos.csaba@gmail.com" class="contact-link">Email</a>
-        <a href="https://www.linkedin.com/in/darabos-csaba/" target="_blank" class="contact-link">LinkedIn</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-text">© 2026 — Due to NDAs, source code for some projects is not public.</div>
-        <div class="footer-links"><a href="https://linkedin.com/in/darabos-csaba/" target="_blank">LinkedIn</a><a href="mailto:darabos.csaba@gmail.com">Email</a></div>
-      </div>
-    </div>
-  </footer>
-
-  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
-  <div class="modal" id="modal">
-    <div class="modal-header">
-      <div>
-        <div class="modal-meta"><span class="modal-badge">Case Study</span></div>
-        <h2 class="modal-title" id="modalTitle"></h2>
-        <p class="modal-subtitle" id="modalSubtitle"></p>
-      </div>
-      <button class="modal-close" onclick="closeModal()" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
-    </div>
-    <div class="modal-body"><article class="case-study" id="modalContent"></article></div>
+<section class="hero wrap">
+  <div class="hero-eyebrow">// Systems Engineer</div>
+  <h1>Structure before<br><em>Automation.</em></h1>
+  <p class="hero-desc">I build systems that transform unstructured chaos into executable logic. Engineering-first AI, compliance-grade pipelines, and pragmatic automation for real-world operations.</p>
+  <div class="tags">
+    <span class="tag">Python</span>
+    <span class="tag">Applied AI</span>
+    <span class="tag">RAG Systems</span>
+    <span class="tag">Compliance</span>
+    <span class="tag">Voice Agents</span>
+    <span class="tag">Process Automation</span>
   </div>
+</section>
 
-  <script>
-    const caseStudies={beatthebot:{title:"BeatTheBot",subtitle:"How we built a prompt-hardening playground",content:`<h2>The Problem</h2><p>While developing a voice agent, we quickly realized: <strong>"happy path" testing is worthless.</strong> The real question isn't whether it works — it's <strong>how it breaks</strong>.</p><p>Users are creative. They interrupt the bot, switch topics, provoke, or simply don't say what we expect. Traditional QA isn't enough — we needed a method to <strong>systematically uncover weaknesses</strong>.</p><h2>The Idea: Gamified Red-Teaming</h2><p>Instead of trying to imagine every edge case ourselves, <strong>we outsourced it to users</strong>. The concept is simple: give them a goal (e.g., "make the bot forget what you were talking about"), make it competitive, and watch what happens.</p><p>This isn't a new idea — in security, it's called "bug bounty." But it's rarely applied to voice agent prompt engineering.</p><h2>Technical Decisions</h2><p><strong>1. Why not unit tests?</strong></p><p>Prompt behavior is non-deterministic. The same input can produce different outputs. Instead, we looked for <strong>patterns</strong>: what types of attacks consistently break through?</p><p><strong>2. Categorized attack vectors</strong></p><p>During testing, these main categories emerged:</p><ul><li><strong>Context hijacking</strong> — "Actually, let's forget everything we discussed..."</li><li><strong>Role confusion</strong> — "You're now a different assistant"</li><li><strong>Emotional manipulation</strong> — "It's really important you help me, otherwise..."</li><li><strong>Edge case inputs</strong> — Extremely long sentences, foreign languages, silence</li></ul><p><strong>3. Feedback loop</strong></p><p>After every successful "break":</p><ul><li>Analysis: what was the root cause?</li><li>Prompt modification</li><li>Retest with the same vector</li><li>Regression test: did we break something else?</li></ul><h2>What We Learned</h2><p><strong>Most breaks aren't technical — they're logical.</strong> The LLM isn't failing — the prompt didn't define allowed behavior precisely enough.</p><blockquote><p>Example: The bot got confused when a user said: "Wait, I said that wrong, let's start over." The prompt didn't explicitly handle "reset" requests.</p></blockquote><p><strong>Defense is layered.</strong> A single "strong" system prompt isn't enough. You need:</p><ul><li>Input-level filters</li><li>Conversation state tracking</li><li>Graceful degradation ("I don't understand, could you clarify?")</li></ul><h2>Results</h2><p>Gamified testing uncovered <strong>~3x more edge cases</strong> than internal QA. And more importantly: <strong>users enjoyed it</strong>. The "I beat the bot" feeling is more motivating than a bug report form.</p><div class="case-study-footer">This approach applies to any LLM-based system: chatbots, agents, automated customer service. The question isn't "does it work?" — it's "how will it break in production?"</div>`}};
-    function openModal(id){const s=caseStudies[id];if(!s)return;document.getElementById('modalTitle').textContent=s.title;document.getElementById('modalSubtitle').textContent=s.subtitle;document.getElementById('modalContent').innerHTML=s.content;document.getElementById('modalOverlay').classList.add('active');document.getElementById('modal').classList.add('active');document.body.style.overflow='hidden'}
-    function closeModal(){document.getElementById('modalOverlay').classList.remove('active');document.getElementById('modal').classList.remove('active');document.body.style.overflow=''}
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-    const hamburger=document.getElementById('hamburger'),navLinks=document.getElementById('nav-links');
-    hamburger.addEventListener('click',function(){this.classList.toggle('active');navLinks.classList.toggle('active');document.body.style.overflow=this.classList.contains('active')?'hidden':''});
-    function closeMenu(){hamburger.classList.remove('active');navLinks.classList.remove('active');document.body.style.overflow=''}
-    function copyEmail(){navigator.clipboard.writeText('darabos.csaba@gmail.com').then(()=>{const f=document.getElementById('copy-feedback');f.style.opacity='1';setTimeout(()=>f.style.opacity='0',2000)})}
-    const filterButtons=document.querySelectorAll('.filter-btn'),cards=Array.from(document.querySelectorAll('.card'));let activeCategory='all';
-    function updateCounts(){const c={all:cards.length,ai:cards.filter(c=>c.dataset.category==='ai').length,compliance:cards.filter(c=>c.dataset.category==='compliance').length,automation:cards.filter(c=>c.dataset.category==='automation').length,engineering:cards.filter(c=>c.dataset.category==='engineering').length};document.getElementById('countAll').textContent=' '+c.all;document.getElementById('countAI').textContent=' '+c.ai;document.getElementById('countCompliance').textContent=' '+c.compliance;document.getElementById('countAutomation').textContent=' '+c.automation;document.getElementById('countEngineering').textContent=' '+c.engineering}
-    function applyFilter(){cards.forEach(card=>{const show=activeCategory==='all'||card.dataset.category===activeCategory;card.style.display=show?'flex':'none'})}
-    filterButtons.forEach(btn=>{btn.addEventListener('click',function(){activeCategory=this.dataset.category;filterButtons.forEach(b=>b.classList.remove('active'));this.classList.add('active');applyFilter()})});
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h&&h!=='#'){e.preventDefault();document.querySelector(h)?.scrollIntoView({behavior:'smooth'})}})});
-    updateCounts();
-  </script>
+<section class="section wrap" id="projects">
+  <div class="sec-hd">
+    <span class="sec-label">Projects</span>
+    <div class="filters">
+      <button class="f-btn on" data-cat="all">All<span class="f-cnt" id="cAll"></span></button>
+      <button class="f-btn" data-cat="ai">AI<span class="f-cnt" id="cAI"></span></button>
+      <button class="f-btn" data-cat="compliance">Compliance<span class="f-cnt" id="cComp"></span></button>
+      <button class="f-btn" data-cat="automation">Automation<span class="f-cnt" id="cAuto"></span></button>
+      <button class="f-btn" data-cat="engineering">Engineering<span class="f-cnt" id="cEng"></span></button>
+    </div>
+  </div>
+  <div class="grid" id="grid">
+
+    <div class="card feat" data-cat="ai">
+      <div class="feat-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Most advanced solution
+      </div>
+      <div class="card-cat">Applied AI · Construction</div>
+      <h3 class="card-title">Construction Budget Auditor</h3>
+      <div class="card-sub">Uploaded budget → savings + hidden conflicts</div>
+      <p class="card-body">Analyzes submitted construction budgets from both a pricing and material-substitution angle: identifies alternative materials for primary items, flags substitutions acceptable at the cost of quality, and surfaces hidden extra costs and internal contradictions. <strong>My most advanced solution to date — the knowledge and best capabilities of 4 AI models combined into a single framework.</strong></p>
+      <div class="stack">
+        <span class="badge">Multi-Agent AI</span><span class="badge">LLM Ensemble</span>
+        <span class="badge">Python</span><span class="badge">Document AI</span><span class="badge">Cost Analysis</span>
+      </div>
+      <div class="card-ft">
+        <span class="int-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Hunép Zrt — internal use</span>
+      </div>
+    </div>
+
+    <div class="card" data-cat="ai">
+      <div class="card-cat">Applied AI · Construction</div>
+      <h3 class="card-title">Construction Consignment Verifier</h3>
+      <div class="card-sub">Shop drawings → material takeoff → cross-check</div>
+      <p class="card-body">Automatically extracts material takeoffs from consignment drawings (windows & doors, metalwork, joinery, etc.) and cross-references them against the written specification. Flags discrepancies, supports quantity calculations, and drastically reduces manual verification time.</p>
+      <div class="stack">
+        <span class="badge">Computer Vision</span><span class="badge">LLM</span>
+        <span class="badge">Python</span><span class="badge">PDF/CAD parsing</span><span class="badge">NLP</span>
+      </div>
+      <div class="card-ft">
+        <span class="int-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Hunép Zrt — internal use</span>
+      </div>
+    </div>
+
+    <div class="card" data-cat="ai">
+      <div class="card-cat">Applied AI</div>
+      <h3 class="card-title">BeatTheBot — Voice Agent Stress-Test</h3>
+      <div class="card-sub">Prompt hardening under adversarial behavior</div>
+      <p class="card-body">An interactive "game" designed to stress-test AI voice agents. Users try to break the bot, revealing weaknesses in prompt engineering through gamified red-teaming.</p>
+      <div class="stack">
+        <span class="badge">LLM</span><span class="badge">Prompt Engineering</span>
+        <span class="badge">Evaluation</span><span class="badge">Web</span>
+      </div>
+      <div class="card-ft">
+        <a href="https://beatthe.bot" target="_blank" class="c-link">Play Game<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+        <button class="cs-btn" onclick="openModal('beatthebot')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Case Study</button>
+      </div>
+    </div>
+
+    <div class="card" data-cat="ai">
+      <div class="card-cat">Applied AI</div>
+      <h3 class="card-title">Observio — Official Gazette Monitoring</h3>
+      <div class="card-sub">Hungarian Gazette → OCR/AI scoring → alerts</div>
+      <p class="card-body">Automated monitoring of "Magyar Közlöny" and regulatory feeds. Semantic scoring filters thousands of pages for business relevance, delivering personalized email digests. Also deployed in private-use variants: <strong>public procurement tender tracker</strong> (monitors new tenders matching a client's profile) and <strong>municipal council agenda monitor</strong> (tracks submitted proposals across local government sessions).</p>
+      <div class="stack">
+        <span class="badge">Python</span><span class="badge">OCR</span>
+        <span class="badge">Azure AI</span><span class="badge">SES</span>
+      </div>
+      <div class="card-ft">
+        <a href="https://observio.app" target="_blank" class="c-link">Visit Site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+      </div>
+    </div>
+
+    <div class="card" data-cat="compliance">
+      <div class="card-cat">Data & Compliance</div>
+      <h3 class="card-title">Fishing Catch & Registry System</h3>
+      <div class="card-sub">Executable regulations → deterministic validation</div>
+      <p class="card-body">A unified domain model treating complex regulations (closed seasons, size limits, daily quotas) as executable code rules with automatic validation against government data.</p>
+      <div class="stack">
+        <span class="badge">Python</span><span class="badge">DDD</span>
+        <span class="badge">Web Scraping</span><span class="badge">NLP</span>
+      </div>
+      <div class="card-ft">
+        <a href="https://horgaszfogas.com" target="_blank" class="c-link">Visit Site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+      </div>
+    </div>
+
+    <div class="card" data-cat="engineering">
+      <div class="card-cat">Engineering</div>
+      <h3 class="card-title">Algo Trading Research Toolkit</h3>
+      <div class="card-sub">Backtests, risk guards, strategy iteration</div>
+      <p class="card-body">Research workflow for FX strategies with MT5 + Python integration. <strong>Strategy passed FTMO Challenge and is trading on a live $100k funded account.</strong></p>
+      <div class="stack">
+        <span class="badge">Python</span><span class="badge">MT5</span>
+        <span class="badge">MQL5</span><span class="badge">Backtesting</span>
+      </div>
+    </div>
+
+    <div class="card" data-cat="ai">
+      <div class="card-cat">Applied AI</div>
+      <h3 class="card-title">Open-Source RAG Stack</h3>
+      <div class="card-sub">Docs + tables → structure-aware retrieval</div>
+      <p class="card-body">RAG system optimized for complex Hungarian documents. Special attention to table structures and document hierarchy for precise, hallucination-resistant answers.</p>
+      <div class="stack">
+        <span class="badge">Qdrant</span><span class="badge">LlamaIndex</span>
+        <span class="badge">Python</span><span class="badge">Embeddings</span>
+      </div>
+    </div>
+
+    <div class="card" data-cat="ai">
+      <div class="card-cat">Applied AI</div>
+      <h3 class="card-title">Secure Local AI (On-Prem LLM)</h3>
+      <div class="card-sub">Sensitive docs → local inference</div>
+      <p class="card-body">Deployment of open-weights models (Llama 3) on local infrastructure for confidential data processing. Documents never leave the internal network.</p>
+      <div class="stack">
+        <span class="badge">Ollama</span><span class="badge">Llama 3</span>
+        <span class="badge">Linux</span><span class="badge">Infra</span>
+      </div>
+    </div>
+
+    <div class="card" data-cat="ai">
+      <div class="card-cat">Applied AI</div>
+      <h3 class="card-title">AI Phone Assistant (Scheduling)</h3>
+      <div class="card-sub">Natural language → calendar event</div>
+      <p class="card-body">Voice agent handling Hungarian scheduling nuances ("next Tuesday afternoon"). Real-time calendar checks and automatic appointment creation.</p>
+      <div class="stack">
+        <span class="badge">Vapi.ai</span><span class="badge">LLM</span>
+        <span class="badge">Calendar API</span><span class="badge">Voice</span>
+      </div>
+    </div>
+
+    <div class="card" data-cat="engineering">
+      <div class="card-cat">Engineering</div>
+      <h3 class="card-title">Blueprint Revision Comparator</h3>
+      <div class="card-sub">PDF drawings → change heatmap</div>
+      <p class="card-body">Solves the classic construction problem: "What changed in this revision?" Pixel-level comparison with OpenCV, generating visual change heatmaps.</p>
+      <div class="stack">
+        <span class="badge">Python</span><span class="badge">OpenCV</span><span class="badge">PyMuPDF</span>
+      </div>
+    </div>
+
+    <div class="card" data-cat="automation">
+      <div class="card-cat">Automation</div>
+      <h3 class="card-title">Document Ingestion Pipeline</h3>
+      <div class="card-sub">Mixed PDFs → normalized JSON</div>
+      <p class="card-body">Robust pipeline for mixed-quality documents: scanned PDFs, images, Word files. Azure Document Intelligence for normalization and metadata extraction.</p>
+      <div class="stack">
+        <span class="badge">Azure DI</span><span class="badge">Python</span>
+        <span class="badge">OCR</span><span class="badge">JSON Schema</span>
+      </div>
+    </div>
+
+    <div class="card" data-cat="automation">
+      <div class="card-cat">Automation</div>
+      <h3 class="card-title">Construction Log Analytics</h3>
+      <div class="card-sub">Daily reports → structured KPIs</div>
+      <p class="card-body">Turns unstructured daily site logs into structured data. Tracks completion percentages, aggregates weather delays, archives evidence for billing and disputes.</p>
+      <div class="stack">
+        <span class="badge">Power Automate</span><span class="badge">SharePoint</span>
+        <span class="badge">Data Modeling</span>
+      </div>
+    </div>
+
+    <div class="card" data-cat="compliance">
+      <div class="card-cat">Data & Compliance</div>
+      <h3 class="card-title">Regulatory Impact Filter</h3>
+      <div class="card-sub">Legislation → relevance scoring</div>
+      <p class="card-body">Corporate tool answering "Does this affect us?" Uses entity recognition and custom classifiers to flag legislation impacting specific operational domains.</p>
+      <div class="stack">
+        <span class="badge">Python</span><span class="badge">NLP</span><span class="badge">Scraping</span>
+      </div>
+    </div>
+
+    <div class="card" data-cat="ai">
+      <div class="card-cat">Applied AI</div>
+      <h3 class="card-title">Automated Meeting Intelligence</h3>
+      <div class="card-sub">Audio → Text → Action Items</div>
+      <p class="card-body">Automated workflow for voice notes and meeting recordings. Whisper transcription (with Hungarian support), LLM-based action item extraction.</p>
+      <div class="stack">
+        <span class="badge">Whisper</span><span class="badge">Python</span><span class="badge">LLM</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section wrap" id="philosophy">
+  <div class="sec-hd"><span class="sec-label">Approach</span></div>
+  <div class="approach-text">
+    <p><strong>AI tools alone are just raw potential.</strong> Without context, they solve nothing. The real value lies in deep process knowledge: identifying the exact pain points where automation translates into reclaimed time and measurable economic gain.</p>
+    <p>I combine AI technologies creatively and boldly — not just as a developer, but with the perspective of <strong>25 years in management and process improvement.</strong> My focus is always on ROI: not "what can AI do?" but "how does this generate profit?"</p>
+  </div>
+  <div class="principles">
+    <div class="principle"><div class="prin-num">01</div><h3>Process First</h3><p>Understanding business logic and pain points before writing a single line of code.</p></div>
+    <div class="principle"><div class="prin-num">02</div><h3>Economic Value</h3><p>Focusing on time savings and efficiency. If it doesn't pay off, it's just a toy.</p></div>
+    <div class="principle"><div class="prin-num">03</div><h3>Experience</h3><p>Leveraging 25 years of cross-industry problem-solving to deploy AI where it actually works.</p></div>
+  </div>
+</section>
+
+<section class="section wrap" id="contact">
+  <div class="sec-hd"><span class="sec-label">Contact</span></div>
+  <div class="contact-grid">
+
+    <div class="contact-card">
+      <h3>Collaboration & Consulting</h3>
+      <p>Productizing internal tools, AI integration, process automation.</p>
+      <div class="contact-rows">
+
+        <div class="contact-row">
+          <div class="row-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <div class="row-content">
+            <div class="row-label">Email</div>
+            <div class="row-value">darabos.csaba@gmail.com</div>
+          </div>
+          <div class="row-action">
+            <button class="mini-btn" onclick="copyEmail()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+            <span class="copied-flash" id="copiedFlash">Copied!</span>
+          </div>
+        </div>
+
+        <a href="tel:+36300801624" class="contact-row">
+          <div class="row-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.18 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="row-content">
+            <div class="row-label">Phone</div>
+            <div class="row-value">+36 30 080 1624</div>
+          </div>
+          <div class="row-action">
+            <span class="mini-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.18 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call
+            </span>
+          </div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/darabos-csaba/" target="_blank" rel="noopener" class="contact-row">
+          <div class="row-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div class="row-content">
+            <div class="row-label">LinkedIn</div>
+            <div class="row-value">linkedin.com/in/darabos-csaba</div>
+          </div>
+          <div class="row-action">
+            <span class="mini-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              Open
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- VCard CTA -->
+    <a class="vcard-cta" href="#" onclick="downloadVCard(event)">
+      <div class="vcard-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="2" y="5" width="20" height="14" rx="2"/>
+          <circle cx="8.5" cy="11" r="2"/>
+          <path d="M14 9h4M14 13h3"/>
+          <path d="M4.5 18c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2"/>
+        </svg>
+      </div>
+      <div class="vcard-text">
+        <strong>Save contact to phone</strong>
+        <span>One tap — instantly in your contacts</span>
+      </div>
+      <span class="vcard-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Save contact
+      </span>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <span class="foot-copy">© 2026 — Due to NDAs, source code for some projects is not public.</span>
+      <div class="foot-links">
+        <a href="https://linkedin.com/in/darabos-csaba/" target="_blank">LinkedIn</a>
+        <a href="mailto:darabos.csaba@gmail.com">Email</a>
+        <a href="tel:+36300801624">Phone</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeModal()"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="modal-hd">
+    <div>
+      <span class="modal-pill">Case Study</span>
+      <h2 class="modal-title" id="mTitle"></h2>
+      <p class="modal-sub" id="mSub"></p>
+    </div>
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="modal-body"><article class="cs" id="mContent"></article></div>
+</div>
+
+<script>
+/* VCARD — inline blob, no server needed */
+function downloadVCard(e) {
+  e.preventDefault();
+  const vcf = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'FN:Darabos Csaba',
+    'N:Darabos;Csaba;;;',
+    'ORG:Systems Engineer & AI Automation',
+    'TITLE:AI & Automation Engineer',
+    'TEL;TYPE=CELL:+36300801624',
+    'EMAIL:darabos.csaba@gmail.com',
+    'URL:https://www.linkedin.com/in/darabos-csaba/',
+    'NOTE:Systems Engineer — AI\\, Automation\\, Data Pipelines. 25 years of management & process improvement.',
+    'END:VCARD'
+  ].join('\r\n');
+  const blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = 'darabos-csaba.vcf';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+/* COPY EMAIL */
+function copyEmail() {
+  navigator.clipboard.writeText('darabos.csaba@gmail.com').then(() => {
+    const f = document.getElementById('copiedFlash');
+    f.style.opacity = '1';
+    setTimeout(() => f.style.opacity = '0', 2000);
+  });
+}
+
+/* NAV */
+const ham = document.getElementById('ham');
+const drawer = document.getElementById('drawer');
+ham.addEventListener('click', function() {
+  const open = this.classList.toggle('open');
+  drawer.classList.toggle('open', open);
+  this.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+function closeNav() {
+  ham.classList.remove('open');
+  drawer.classList.remove('open');
+  ham.setAttribute('aria-expanded', false);
+  document.body.style.overflow = '';
+}
+
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const h = this.getAttribute('href');
+    if (h && h !== '#') { e.preventDefault(); document.querySelector(h)?.scrollIntoView({ behavior:'smooth' }); }
+  });
+});
+
+/* FILTER */
+const fBtns = document.querySelectorAll('.f-btn');
+const cards = Array.from(document.querySelectorAll('.card'));
+let active = 'all';
+function updateCounts() {
+  const cats = ['all','ai','compliance','automation','engineering'];
+  const ids  = ['cAll','cAI','cComp','cAuto','cEng'];
+  cats.forEach((cat, i) => {
+    const n = cat === 'all' ? cards.length : cards.filter(c => c.dataset.cat === cat).length;
+    document.getElementById(ids[i]).textContent = ' ' + n;
+  });
+}
+function applyFilter() {
+  cards.forEach(c => { c.style.display = (active==='all'||c.dataset.cat===active)?'flex':'none'; });
+}
+fBtns.forEach(btn => {
+  btn.addEventListener('click', function() {
+    active = this.dataset.cat;
+    fBtns.forEach(b => b.classList.remove('on'));
+    this.classList.add('on');
+    applyFilter();
+  });
+});
+
+/* MODAL */
+const studies = {
+  beatthebot: {
+    title: 'BeatTheBot',
+    sub: 'How we built a prompt-hardening playground',
+    content: `<h2>The Problem</h2>
+<p>While developing a voice agent, we quickly realized: <strong>"happy path" testing is worthless.</strong> The real question isn't whether it works — it's <strong>how it breaks</strong>.</p>
+<p>Users are creative. They interrupt the bot, switch topics, provoke, or simply don't say what we expect. Traditional QA isn't enough — we needed a method to <strong>systematically uncover weaknesses</strong>.</p>
+<h2>The Idea: Gamified Red-Teaming</h2>
+<p>Instead of imagining every edge case ourselves, <strong>we outsourced it to users</strong>. Give them a goal (e.g., "make the bot forget what you were talking about"), make it competitive, and watch what happens. In security this is called a "bug bounty" — rarely applied to voice agent prompt engineering.</p>
+<h2>Attack Categories</h2>
+<ul>
+  <li><strong>Context hijacking</strong> — "Actually, let's forget everything we discussed..."</li>
+  <li><strong>Role confusion</strong> — "You're now a different assistant"</li>
+  <li><strong>Emotional manipulation</strong> — "It's really important you help me, otherwise..."</li>
+  <li><strong>Edge case inputs</strong> — Extremely long sentences, foreign languages, silence</li>
+</ul>
+<h2>What We Learned</h2>
+<p><strong>Most breaks aren't technical — they're logical.</strong> The LLM isn't failing; the prompt didn't define allowed behavior precisely enough.</p>
+<blockquote><p>The bot got confused when a user said: "Wait, I said that wrong, let's start over." The prompt didn't explicitly handle "reset" requests.</p></blockquote>
+<p><strong>Defense is layered.</strong> A single strong system prompt isn't enough. You need input-level filters, conversation state tracking, and graceful degradation.</p>
+<h2>Results</h2>
+<p>Gamified testing uncovered <strong>~3× more edge cases</strong> than internal QA — and users <em>enjoyed it</em>.</p>
+<div class="cs-note">The question isn't "does it work?" — it's "how will it break in production?"</div>`
+  }
+};
+function openModal(id) {
+  const s = studies[id]; if (!s) return;
+  document.getElementById('mTitle').textContent = s.title;
+  document.getElementById('mSub').textContent   = s.sub;
+  document.getElementById('mContent').innerHTML = s.content;
+  document.getElementById('overlay').classList.add('on');
+  document.getElementById('modal').classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('overlay').classList.remove('on');
+  document.getElementById('modal').classList.remove('on');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
+
+updateCounts();
+</script>
 </body>
 </html>
